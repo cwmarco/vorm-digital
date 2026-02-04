@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 interface LiquidGradientProps {
@@ -8,7 +8,7 @@ interface LiquidGradientProps {
 }
 
 class TouchTexture {
-  size = 64; width = 64; height = 64; maxAge = 64; radius = 0.1; speed = 1/64;
+  size = 128; width = 128; height = 128; maxAge = 120; radius = 0.15; speed = 1/120;
   trail: { x: number; y: number; age: number; force: number; vx: number; vy: number }[] = [];
   last: { x: number; y: number } | null = null;
   canvas: HTMLCanvasElement;
@@ -26,7 +26,7 @@ class TouchTexture {
   }
 
   update() {
-    this.ctx.fillStyle = "black";
+    this.ctx.fillStyle = "rgba(0,0,0,0.05)";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     for (let i = this.trail.length - 1; i >= 0; i--) {
       const p = this.trail[i];
@@ -47,7 +47,7 @@ class TouchTexture {
       if (dx === 0 && dy === 0) return;
       const d = Math.sqrt(dx*dx + dy*dy);
       vx = dx/d; vy = dy/d;
-      force = Math.min((dx*dx + dy*dy) * 20000, 2.0);
+      force = Math.min((dx*dx + dy*dy) * 10000, 1.0);
     }
     this.last = { x: point.x, y: point.y };
     this.trail.push({ x: point.x, y: point.y, age: 0, force, vx, vy });
@@ -55,19 +55,20 @@ class TouchTexture {
 
   drawPoint(p: { x: number; y: number; age: number; force: number; vx: number; vy: number }) {
     const pos = { x: p.x * this.width, y: (1 - p.y) * this.height };
-    let intensity = p.age < this.maxAge * 0.3
-      ? Math.sin((p.age / (this.maxAge * 0.3)) * (Math.PI / 2))
-      : -((1 - (p.age - this.maxAge * 0.3) / (this.maxAge * 0.7)) * ((1 - (p.age - this.maxAge * 0.3) / (this.maxAge * 0.7)) - 2));
-    intensity *= p.force;
-    const color = `${((p.vx + 1) / 2) * 255}, ${((p.vy + 1) / 2) * 255}, ${intensity * 255}`;
-    const radius = this.radius * this.width;
-    this.ctx.shadowOffsetX = this.size * 5;
-    this.ctx.shadowOffsetY = this.size * 5;
-    this.ctx.shadowBlur = radius;
-    this.ctx.shadowColor = `rgba(${color},${0.2 * intensity})`;
+    const life = 1 - p.age / this.maxAge;
+    const intensity = life * p.force;
+    const radius = this.radius * this.width * (1 + (1 - life) * 2);
+
+    const gradient = this.ctx.createRadialGradient(pos.x, pos.y, 0, pos.x, pos.y, radius);
+    const r = Math.floor(((p.vx + 1) / 2) * 255);
+    const g = Math.floor(((p.vy + 1) / 2) * 255);
+    const b = Math.floor(intensity * 255);
+    gradient.addColorStop(0, `rgba(${r},${g},${b},${intensity * 0.3})`);
+    gradient.addColorStop(1, `rgba(${r},${g},${b},0)`);
+
+    this.ctx.fillStyle = gradient;
     this.ctx.beginPath();
-    this.ctx.fillStyle = "rgba(255,0,0,1)";
-    this.ctx.arc(pos.x - this.size * 5, pos.y - this.size * 5, radius, 0, Math.PI * 2);
+    this.ctx.arc(pos.x, pos.y, radius, 0, Math.PI * 2);
     this.ctx.fill();
   }
 }
@@ -82,21 +83,11 @@ class GradientBackground {
     this.uniforms = {
       uTime: { value: 0 },
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-      uColor1: { value: new THREE.Vector3(0.945, 0.353, 0.133) },
-      uColor2: { value: new THREE.Vector3(0.039, 0.055, 0.153) },
-      uColor3: { value: new THREE.Vector3(0.945, 0.353, 0.133) },
-      uColor4: { value: new THREE.Vector3(0.039, 0.055, 0.153) },
-      uColor5: { value: new THREE.Vector3(0.945, 0.353, 0.133) },
-      uColor6: { value: new THREE.Vector3(0.039, 0.055, 0.153) },
-      uSpeed: { value: 1.2 },
-      uIntensity: { value: 1.8 },
       uTouchTexture: { value: null },
-      uGrainIntensity: { value: 0.08 },
-      uDarkNavy: { value: new THREE.Vector3(0.039, 0.055, 0.153) },
-      uGradientSize: { value: 0.45 },
-      uGradientCount: { value: 12.0 },
-      uColor1Weight: { value: 0.5 },
-      uColor2Weight: { value: 1.8 }
+      uBackground: { value: new THREE.Vector3(0.973, 0.976, 0.949) },  // Cream #F8F9F2
+      uColor1: { value: new THREE.Vector3(0.969, 0.506, 0.329) },  // Coral #F78154
+      uColor2: { value: new THREE.Vector3(0.910, 0.925, 0.839) },  // Light sage #E8ECD6
+      uColor3: { value: new THREE.Vector3(0.659, 0.816, 0.859) },  // Light blue #A8D0DB
     };
   }
 
@@ -107,59 +98,116 @@ class GradientBackground {
       uniforms: this.uniforms,
       vertexShader: `varying vec2 vUv; void main() { gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); vUv = uv; }`,
       fragmentShader: `
-        uniform float uTime, uSpeed, uIntensity, uGrainIntensity, uGradientSize, uGradientCount, uColor1Weight, uColor2Weight;
+        uniform float uTime;
         uniform vec2 uResolution;
-        uniform vec3 uColor1, uColor2, uColor3, uColor4, uColor5, uColor6, uDarkNavy;
+        uniform vec3 uBackground, uColor1, uColor2, uColor3;
         uniform sampler2D uTouchTexture;
         varying vec2 vUv;
 
-        float grain(vec2 uv, float t) { return fract(sin(dot(uv * uResolution * 0.5 + t, vec2(12.9898, 78.233))) * 43758.5453) * 2.0 - 1.0; }
+        // Simplex noise functions
+        vec3 mod289(vec3 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
+        vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
+        vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
 
-        vec3 getGradientColor(vec2 uv, float time) {
-          vec2 c1 = vec2(0.5 + sin(time * uSpeed * 0.4) * 0.4, 0.5 + cos(time * uSpeed * 0.5) * 0.4);
-          vec2 c2 = vec2(0.5 + cos(time * uSpeed * 0.6) * 0.5, 0.5 + sin(time * uSpeed * 0.45) * 0.5);
-          vec2 c3 = vec2(0.5 + sin(time * uSpeed * 0.35) * 0.45, 0.5 + cos(time * uSpeed * 0.55) * 0.45);
-          vec2 c4 = vec2(0.5 + cos(time * uSpeed * 0.5) * 0.4, 0.5 + sin(time * uSpeed * 0.4) * 0.4);
-          vec2 c5 = vec2(0.5 + sin(time * uSpeed * 0.7) * 0.35, 0.5 + cos(time * uSpeed * 0.6) * 0.35);
-          vec2 c6 = vec2(0.5 + cos(time * uSpeed * 0.45) * 0.5, 0.5 + sin(time * uSpeed * 0.65) * 0.5);
+        float snoise(vec3 v) {
+          const vec2 C = vec2(1.0/6.0, 1.0/3.0);
+          const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
+          vec3 i = floor(v + dot(v, C.yyy));
+          vec3 x0 = v - i + dot(i, C.xxx);
+          vec3 g = step(x0.yzx, x0.xyz);
+          vec3 l = 1.0 - g;
+          vec3 i1 = min(g.xyz, l.zxy);
+          vec3 i2 = max(g.xyz, l.zxy);
+          vec3 x1 = x0 - i1 + C.xxx;
+          vec3 x2 = x0 - i2 + C.yyy;
+          vec3 x3 = x0 - D.yyy;
+          i = mod289(i);
+          vec4 p = permute(permute(permute(
+            i.z + vec4(0.0, i1.z, i2.z, 1.0))
+            + i.y + vec4(0.0, i1.y, i2.y, 1.0))
+            + i.x + vec4(0.0, i1.x, i2.x, 1.0));
+          float n_ = 0.142857142857;
+          vec3 ns = n_ * D.wyz - D.xzx;
+          vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
+          vec4 x_ = floor(j * ns.z);
+          vec4 y_ = floor(j - 7.0 * x_);
+          vec4 x = x_ *ns.x + ns.yyyy;
+          vec4 y = y_ *ns.x + ns.yyyy;
+          vec4 h = 1.0 - abs(x) - abs(y);
+          vec4 b0 = vec4(x.xy, y.xy);
+          vec4 b1 = vec4(x.zw, y.zw);
+          vec4 s0 = floor(b0)*2.0 + 1.0;
+          vec4 s1 = floor(b1)*2.0 + 1.0;
+          vec4 sh = -step(h, vec4(0.0));
+          vec4 a0 = b0.xzyw + s0.xzyw*sh.xxyy;
+          vec4 a1 = b1.xzyw + s1.xzyw*sh.zzww;
+          vec3 p0 = vec3(a0.xy, h.x);
+          vec3 p1 = vec3(a0.zw, h.y);
+          vec3 p2 = vec3(a1.xy, h.z);
+          vec3 p3 = vec3(a1.zw, h.w);
+          vec4 norm = taylorInvSqrt(vec4(dot(p0,p0), dot(p1,p1), dot(p2,p2), dot(p3,p3)));
+          p0 *= norm.x; p1 *= norm.y; p2 *= norm.z; p3 *= norm.w;
+          vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
+          m = m * m;
+          return 42.0 * dot(m*m, vec4(dot(p0,x0), dot(p1,x1), dot(p2,x2), dot(p3,x3)));
+        }
 
-          float i1 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c1));
-          float i2 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c2));
-          float i3 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c3));
-          float i4 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c4));
-          float i5 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c5));
-          float i6 = 1.0 - smoothstep(0.0, uGradientSize, length(uv - c6));
-
-          vec3 color = vec3(0.0);
-          color += uColor1 * i1 * (0.55 + 0.45 * sin(time * uSpeed)) * uColor1Weight;
-          color += uColor2 * i2 * (0.55 + 0.45 * cos(time * uSpeed * 1.2)) * uColor2Weight;
-          color += uColor3 * i3 * (0.55 + 0.45 * sin(time * uSpeed * 0.8)) * uColor1Weight;
-          color += uColor4 * i4 * (0.55 + 0.45 * cos(time * uSpeed * 1.3)) * uColor2Weight;
-          color += uColor5 * i5 * (0.55 + 0.45 * sin(time * uSpeed * 1.1)) * uColor1Weight;
-          color += uColor6 * i6 * (0.55 + 0.45 * cos(time * uSpeed * 0.9)) * uColor2Weight;
-
-          color = clamp(color, vec3(0.0), vec3(1.0)) * uIntensity;
-          float lum = dot(color, vec3(0.299, 0.587, 0.114));
-          color = mix(vec3(lum), color, 1.35);
-          color = pow(color, vec3(0.92));
-          float brightness = length(color);
-          color = mix(uDarkNavy, color, max(brightness * 1.2, 0.15));
-          return color;
+        float fbm(vec3 p) {
+          float value = 0.0;
+          float amplitude = 0.5;
+          for (int i = 0; i < 4; i++) {
+            value += amplitude * snoise(p);
+            p *= 2.0;
+            amplitude *= 0.5;
+          }
+          return value;
         }
 
         void main() {
           vec2 uv = vUv;
+
+          // Get mouse displacement
           vec4 touchTex = texture2D(uTouchTexture, uv);
-          uv.x -= (touchTex.r * 2.0 - 1.0) * 0.8 * touchTex.b;
-          uv.y -= (touchTex.g * 2.0 - 1.0) * 0.8 * touchTex.b;
-          vec2 center = vec2(0.5);
-          float dist = length(uv - center);
-          float ripple = sin(dist * 20.0 - uTime * 3.0) * 0.04 * touchTex.b;
-          uv += vec2(ripple);
-          vec3 color = getGradientColor(uv, uTime);
-          color += grain(uv, uTime) * uGrainIntensity;
-          color = clamp(color, vec3(0.0), vec3(1.0));
-          gl_FragColor = vec4(color, 1.0);
+          float touchStrength = touchTex.b;
+
+          // Displace UV based on mouse movement
+          uv.x += (touchTex.r * 2.0 - 1.0) * 0.12 * touchStrength;
+          uv.y += (touchTex.g * 2.0 - 1.0) * 0.12 * touchStrength;
+
+          // Very slow time
+          float t = uTime * 0.06;
+
+          // Solid gradient base - fills bottom 60% of screen
+          float bottomFill = smoothstep(0.7, 0.0, uv.y);
+
+          // Subtle noise for organic edge (less intensity)
+          float n1 = fbm(vec3(uv * 1.2, t * 0.3)) * 0.15;
+          float n2 = fbm(vec3(uv * 1.0 + 50.0, t * 0.2)) * 0.12;
+          float n3 = fbm(vec3(uv * 1.5 + 100.0, t * 0.25)) * 0.1;
+
+          // Color zones based on x position with subtle noise variation
+          float xPos = uv.x + n1;
+
+          // Create smooth horizontal bands that shift
+          float zone1 = smoothstep(0.0, 0.5, xPos + sin(t * 0.5) * 0.1);
+          float zone2 = smoothstep(0.3, 0.8, xPos + cos(t * 0.4) * 0.15);
+          float zone3 = smoothstep(0.5, 1.0, xPos + sin(t * 0.6) * 0.1);
+
+          // Blend colors as a wash - coral and sage only
+          vec3 washColor = uColor2;  // sage base
+          washColor = mix(washColor, uColor1, zone1 * 0.7 + n2);  // coral
+          washColor = mix(washColor, uColor2, zone2 * 0.5 + n3);  // sage
+          washColor = mix(washColor, uColor1, zone3 * 0.6);  // coral again
+
+          // Apply to bottom portion
+          vec3 color = mix(uBackground, washColor, bottomFill * 0.85);
+
+          // Very subtle grain
+          float grain = (fract(sin(dot(uv * uResolution, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.015;
+          color += grain;
+
+          gl_FragColor = vec4(clamp(color, 0.0, 1.0), 1.0);
         }
       `
     });
@@ -200,7 +248,7 @@ class App {
     this.camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 10000);
     this.camera.position.z = 50;
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0a0e27);
+    this.scene.background = new THREE.Color(0xF8F9F2);
     this.clock = new THREE.Clock();
     this.touchTexture = new TouchTexture();
     this.gradientBackground = new GradientBackground(this);
@@ -269,8 +317,8 @@ export function LiquidGradient({ children, className = "" }: LiquidGradientProps
 
   return (
     <div className={`relative w-full h-full ${className}`}>
-      <div ref={containerRef} className="absolute inset-0" />
-      <div className="relative z-10 w-full h-full">
+      <div ref={containerRef} className="absolute inset-0 z-0" />
+      <div className="relative z-10 w-full h-full pointer-events-none [&_a]:pointer-events-auto [&_button]:pointer-events-auto">
         {children}
       </div>
     </div>

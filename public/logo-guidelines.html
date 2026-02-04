@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vorm — Logo Usage Guidelines</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=Outfit:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #F8F9F2;
+      color: #1A2E35;
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      color: #3D5A56;
+      font-size: 18px;
+      margin-bottom: 60px;
+    }
+    h2 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #3D5A56;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #E8ECD6;
+    }
+    .section {
+      margin-bottom: 60px;
+    }
+    .logo-card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .logo-card.dark {
+      background: #1A2E35;
+    }
+    .logo-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .logo-name {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .logo-desc {
+      color: #3D5A56;
+      font-size: 14px;
+    }
+    .dark .logo-name, .dark .logo-desc {
+      color: #F8F9F2;
+    }
+    .dark .logo-desc {
+      color: #A8D0DB;
+    }
+
+    /* Brand Logo */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-logo img {
+      height: 44px;
+      transform: translateY(-4px);
+    }
+    .brand-logo span {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      color: #1A2E35;
+      letter-spacing: -0.01em;
+    }
+
+    /* Product Logo */
+    .product-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .product-logo .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #1A2E35;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-logo .circle img {
+      height: 26px;
+      filter: brightness(0) invert(1);
+    }
+    .product-logo span {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: #1A2E35;
+      letter-spacing: -0.03em;
+    }
+
+    /* Dark variants */
+    .dark .brand-logo img {
+      filter: brightness(0) invert(1);
+    }
+    .dark .brand-logo span {
+      color: #F8F9F2;
+    }
+    .dark .product-logo .circle {
+      background: #F8F9F2;
+    }
+    .dark .product-logo .circle img {
+      filter: none;
+    }
+    .dark .product-logo span {
+      color: #F8F9F2;
+    }
+
+    /* Usage table */
+    .usage-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .usage-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: #E8ECD6;
+      font-weight: 500;
+    }
+    .usage-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #E8ECD6;
+    }
+    .usage-table tr:last-child td {
+      border-bottom: none;
+    }
+    .check { color: #3D5A56; }
+    .x { color: #999; }
+
+    /* Specs */
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .spec {
+      background: #F8F9F2;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .spec-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #3D5A56;
+      margin-bottom: 4px;
+    }
+    .spec-value {
+      font-family: 'SF Mono', monospace;
+      font-size: 13px;
+    }
+
+    .rule {
+      background: white;
+      border-left: 3px solid #1A2E35;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+    .rule strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .rule.dont {
+      border-left-color: #F78154;
+      background: #FFF9F6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vorm Logo System</h1>
+    <p class="subtitle">Two-tier identity for brand and product contexts</p>
+
+    <!-- BRAND LOGO -->
+    <div class="section">
+      <h2>Brand Logo — Editorial / Marketing</h2>
+
+      <div class="logo-card">
+        <div class="logo-display">
+          <div class="brand-logo">
+            <img src="logo.svg" alt="Vorm">
+            <span>Vorm</span>
+          </div>
+        </div>
+        <div class="logo-name">Brand Signature</div>
+        <div class="logo-desc">Bare coral mark + Fraunces serif. Used for storytelling, hero sections, and brand moments.</div>
+
+        <div class="specs">
+          <div class="spec">
+            <div class="spec-label">Symbol</div>
+            <div class="spec-value">44px height</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Typeface</div>
+            <div class="spec-value">Fraunces 36px</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Gap</div>
+            <div class="spec-value">8px</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Optical lift</div>
+            <div class="spec-value">-4px on symbol</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-card dark">
+        <div class="logo-display">
+          <div class="brand-logo">
+            <img src="logo.svg" alt="Vorm">
+            <span>Vorm</span>
+          </div>
+        </div>
+        <div class="logo-name">Brand Signature — Dark</div>
+        <div class="logo-desc">Inverted for dark backgrounds. Same proportions.</div>
+      </div>
+    </div>
+
+    <!-- PRODUCT LOGO -->
+    <div class="section">
+      <h2>Product Logo — UI / System</h2>
+
+      <div class="logo-card">
+        <div class="logo-display">
+          <div class="product-logo">
+            <div class="circle">
+              <img src="logo.svg" alt="Vorm">
+            </div>
+            <span>Vorm</span>
+          </div>
+        </div>
+        <div class="logo-name">Product Mark</div>
+        <div class="logo-desc">Circle-contained mark + Outfit Bold. Used for app headers, dense layouts, and system contexts.</div>
+
+        <div class="specs">
+          <div class="spec">
+            <div class="spec-label">Circle</div>
+            <div class="spec-value">40px diameter</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Symbol in circle</div>
+            <div class="spec-value">26px height</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Typeface</div>
+            <div class="spec-value">Outfit 700, 26px</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Gap</div>
+            <div class="spec-value">6px</div>
+          </div>
+          <div class="spec">
+            <div class="spec-label">Tracking</div>
+            <div class="spec-value">-0.03em</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="logo-card dark">
+        <div class="logo-display">
+          <div class="product-logo">
+            <div class="circle">
+              <img src="logo.svg" alt="Vorm">
+            </div>
+            <span>Vorm</span>
+          </div>
+        </div>
+        <div class="logo-name">Product Mark — Dark</div>
+        <div class="logo-desc">Circle becomes cream (#F8F9F2) on dark backgrounds.</div>
+      </div>
+    </div>
+
+    <!-- USAGE RULES -->
+    <div class="section">
+      <h2>When to Use Each</h2>
+
+      <table class="usage-table">
+        <thead>
+          <tr>
+            <th>Context</th>
+            <th>Brand Logo</th>
+            <th>Product Logo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Landing page hero</td>
+            <td class="check">✓ Yes</td>
+            <td class="x">—</td>
+          </tr>
+          <tr>
+            <td>Marketing materials</td>
+            <td class="check">✓ Yes</td>
+            <td class="x">—</td>
+          </tr>
+          <tr>
+            <td>Social media posts</td>
+            <td class="check">✓ Yes</td>
+            <td class="x">—</td>
+          </tr>
+          <tr>
+            <td>App / dashboard header</td>
+            <td class="x">—</td>
+            <td class="check">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Email header</td>
+            <td class="x">—</td>
+            <td class="check">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>PDF / document header</td>
+            <td class="x">—</td>
+            <td class="check">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Invoice / system docs</td>
+            <td class="x">—</td>
+            <td class="check">✓ Yes</td>
+          </tr>
+          <tr>
+            <td>Favicon / app icon</td>
+            <td class="x">—</td>
+            <td class="check">✓ Circle only</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- HARD RULES -->
+    <div class="section">
+      <h2>Hard Rules</h2>
+
+      <div class="rule">
+        <strong>Never mix fonts</strong>
+        Brand logo always uses Fraunces. Product logo always uses Outfit Bold. No exceptions.
+      </div>
+
+      <div class="rule">
+        <strong>Optical lift is required</strong>
+        The coral symbol has visual weight at the bottom. Always lift 4px when bare, 0px when in circle.
+      </div>
+
+      <div class="rule">
+        <strong>Tight gaps for product, breathing room for brand</strong>
+        Product: 6px gap. Brand: 8-10px gap. Never tighten brand logo.
+      </div>
+
+      <div class="rule dont">
+        <strong>Don't use product logo in hero sections</strong>
+        The circle + bold type competes with headlines. Use brand logo for marketing contexts.
+      </div>
+
+      <div class="rule dont">
+        <strong>Don't use brand logo in dense UI</strong>
+        The bare coral + serif feels precious in utility contexts. Use product logo for apps.
+      </div>
+
+      <div class="rule dont">
+        <strong>Don't scale product logo gap linearly</strong>
+        At XL sizes, increase gap to 8px max. Tighter isn't always better at scale.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,5 +1,17 @@
 import type { Metadata } from "next";
+import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+  weight: ["700"],
+});
 
 export const metadata: Metadata = {
   title: "vorm.digital | Coming Soon",
@@ -13,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full">
-      <body className="antialiased h-full">
+      <body className={`${fraunces.variable} ${outfit.variable} font-serif antialiased h-full`}>
         {children}
       </body>
     </html>
