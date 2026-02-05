@@ -1,0 +1,24 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#3D6B5E"/>
+  <!-- Phone mockup -->
+  <rect x="130" y="60" width="140" height="280" rx="20" fill="#1A2E35" stroke="#4A7A6D" stroke-width="2"/>
+  <rect x="140" y="75" width="120" height="200" rx="4" fill="#F8F9F2"/>
+  <!-- Dashboard cards -->
+  <rect x="150" y="85" width="100" height="40" rx="6" fill="#E8ECD6"/>
+  <rect x="158" y="95" width="40" height="6" rx="2" fill="#2B4E46"/>
+  <rect x="158" y="107" width="60" height="4" rx="2" fill="#2B4E46" opacity="0.3"/>
+  <circle cx="230" cy="105" r="12" fill="#C5D86D"/>
+
+  <rect x="150" y="135" width="100" height="40" rx="6" fill="#A8D0DB" opacity="0.3"/>
+  <rect x="158" y="145" width="50" height="6" rx="2" fill="#2B4E46"/>
+  <rect x="158" y="157" width="70" height="4" rx="2" fill="#2B4E46" opacity="0.3"/>
+
+  <rect x="150" y="185" width="100" height="40" rx="6" fill="#F78154" opacity="0.2"/>
+  <rect x="158" y="195" width="45" height="6" rx="2" fill="#2B4E46"/>
+  <rect x="158" y="207" width="55" height="4" rx="2" fill="#2B4E46" opacity="0.3"/>
+
+  <!-- Connection lines -->
+  <circle cx="100" cy="120" r="25" fill="#C5D86D" opacity="0.3"/>
+  <circle cx="300" cy="150" r="20" fill="#A8D0DB" opacity="0.3"/>
+  <circle cx="320" cy="220" r="30" fill="#F78154" opacity="0.2"/>
+</svg>

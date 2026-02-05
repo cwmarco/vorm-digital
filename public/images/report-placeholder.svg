@@ -1,0 +1,14 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#2B4E46"/>
+  <!-- Phone mockup -->
+  <rect x="130" y="60" width="140" height="280" rx="20" fill="#1A2E35" stroke="#3D5A56" stroke-width="2"/>
+  <rect x="140" y="75" width="120" height="200" rx="4" fill="#F8F9F2"/>
+  <!-- Chart bars -->
+  <rect x="155" y="180" width="20" height="60" fill="#C5D86D"/>
+  <rect x="185" y="150" width="20" height="90" fill="#A8D0DB"/>
+  <rect x="215" y="130" width="20" height="110" fill="#F78154"/>
+  <rect x="245" y="100" width="20" height="140" fill="#2B4E46"/>
+  <!-- Header -->
+  <rect x="155" y="90" width="90" height="8" rx="2" fill="#E8ECD6"/>
+  <rect x="155" y="105" width="60" height="6" rx="2" fill="#E8ECD6" opacity="0.5"/>
+</svg>

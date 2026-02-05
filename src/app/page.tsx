@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="w-screen h-screen">
+    <main className="w-screen h-screen overflow-hidden">
       <LiquidGradient className="w-full h-full">
         <div className="flex flex-col items-center justify-center h-full px-8 text-center font-[family-name:var(--font-fraunces)]">
           <div className="flex items-center gap-[8px] mb-12">
