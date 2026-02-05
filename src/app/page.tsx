@@ -29,14 +29,24 @@ export default function Home() {
             <strong>Bezahlbar.</strong> <strong>Fortschrittlich.</strong> <strong>Exklusiv.</strong>
           </p>
           <p className="text-sm text-[#3D5A56]/60">
-            Kontakt —{" "}
             <a
-              href="mailto:hello@vorm.digital"
+              href="https://cal.com/marco-ennmyq/site-intro"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[#3D5A56] hover:text-[#1A2E35] transition-colors"
             >
-              hello@vorm.digital
+              Termin vereinbaren →
             </a>
           </p>
+
+          <footer className="absolute bottom-8 left-0 right-0 text-center text-xs text-[#3D5A56]/40 space-y-1">
+            <p>© {new Date().getFullYear()} VORM.DIGITAL</p>
+            <p>
+              <a href="/impressum" className="hover:text-[#3D5A56] transition-colors">
+                Impressum
+              </a>
+            </p>
+          </footer>
         </div>
       </LiquidGradient>
     </main>
