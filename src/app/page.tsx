@@ -20,7 +20,7 @@ export default function Home() {
             Sie führen Ihr Business.
           </h1>
           <h2 className="text-4xl md:text-6xl tracking-tight mb-8 text-[#1A2E35] italic">
-            Wir übernehmen Ihr Marketing.
+            Wir übernehmen Marketing.
           </h2>
           <p className="text-lg md:text-xl text-[#2C4A52] mb-6 max-w-lg">
             Ganzheitliche digitale Lösungen aus einer Hand.
