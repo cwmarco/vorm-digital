@@ -10,6 +10,26 @@
   --color-foreground: var(--foreground);
 }
 
+/* Feature cards: 4-col on desktop, sticky stack on mobile */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .feature-grid {
+    display: block;
+  }
+
+  .feature-grid .sticky-card {
+    position: sticky;
+    top: 1rem;
+    z-index: var(--card-z);
+    margin-bottom: 1rem;
+  }
+}
+
 html, body {
   margin: 0;
   padding: 0;

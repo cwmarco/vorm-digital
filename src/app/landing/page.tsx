@@ -397,7 +397,7 @@ function PricingCard({ tier, price, period, prefix, description, features, highl
 
 export default function Landing() {
   return (
-    <main className="min-h-screen bg-[#F8F9F2] overflow-x-hidden">
+    <main className="min-h-screen bg-[#F8F9F2]">
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center px-5 py-12 md:py-20 text-center relative overflow-hidden">
         {/* Animated gradient background */}
@@ -592,40 +592,18 @@ export default function Landing() {
           >
             Sie haben Patienten zu versorgen, ein Team zu führen, und wenig Zeit für Marketing-Meetings. Wir übernehmen den Rest.
           </motion.p>
+        </motion.div>
 
-          {/* Bento grid */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
-            variants={staggerContainer}
-          >
-            <div className="lg:col-span-2">
-              <ImageFeatureCard
-                icon={<ChartLine size={32} weight="light" />}
-                title="Transparente Ergebnisse"
-                subtitle="Volle Transparenz, ohne Umwege."
-                description="Echtzeit-Daten und klare Entwicklungen. Ob täglich, wöchentlich oder monatlich: Sie sehen jederzeit, was passiert. Ohne Reports anfordern zu müssen."
-                bgImage="/images/product-screenshot.png"
-                bgColor="bg-[#A8D0DB]"
-                variant="light"
-                accordion={{
-                  label: "In der Praxis",
-                  content: "Was läuft gerade? Wie hoch ist das Budget? Welche Landingpage, welches Angebot? Hier ist die Antwort. Immer aktuell."
-                }}
-              />
-            </div>
-            <div className="lg:col-span-2">
-              <ImageFeatureCard
-                icon={<PresentationChart size={32} weight="light" />}
-                title="Monatliche Deutung"
-                subtitle="Wir sagen Ihnen, was wichtig ist."
-                description="Es gibt hunderte Kennzahlen. Erfahrung heißt zu wissen, welche davon wirklich etwas bedeuten. Und was wir daraus ableiten."
-                bgImage=""
-                bgColor="bg-[#E8ECD6]"
-                variant="light"
-                imageStyle="flat"
-              />
-            </div>
-            <div className="lg:col-span-1">
+        {/* Bento grid - wider container */}
+        <motion.div
+          className="max-w-7xl mx-auto"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+        >
+          <div className="feature-grid">
+            <div className="sticky-card" style={{ '--card-top': '1rem', '--card-z': 1 } as React.CSSProperties}>
               <ImageFeatureCard
                 icon={<Target size={32} weight="light" />}
                 title="Bewährte Strategien"
@@ -641,7 +619,34 @@ export default function Landing() {
                 }}
               />
             </div>
-            <div className="lg:col-span-3">
+            <div className="sticky-card" style={{ '--card-top': '2rem', '--card-z': 2 } as React.CSSProperties}>
+              <ImageFeatureCard
+                icon={<ChartLine size={32} weight="light" />}
+                title="Transparente Ergebnisse"
+                subtitle="Volle Transparenz, ohne Umwege."
+                description="Echtzeit-Daten und klare Entwicklungen. Ob täglich, wöchentlich oder monatlich: Sie sehen jederzeit, was passiert. Ohne Reports anfordern zu müssen."
+                bgImage="/images/product-screenshot.png"
+                bgColor="bg-[#A8D0DB]"
+                variant="light"
+                accordion={{
+                  label: "In der Praxis",
+                  content: "Was läuft gerade? Wie hoch ist das Budget? Welche Landingpage, welches Angebot? Hier ist die Antwort. Immer aktuell."
+                }}
+              />
+            </div>
+            <div className="sticky-card" style={{ '--card-top': '3rem', '--card-z': 3 } as React.CSSProperties}>
+              <ImageFeatureCard
+                icon={<PresentationChart size={32} weight="light" />}
+                title="Monatliche Deutung"
+                subtitle="Wir sagen Ihnen, was wichtig ist."
+                description="Es gibt hunderte Kennzahlen. Erfahrung heißt zu wissen, welche davon wirklich etwas bedeuten. Und was wir daraus ableiten."
+                bgImage=""
+                bgColor="bg-[#E8ECD6]"
+                variant="light"
+                imageStyle="flat"
+              />
+            </div>
+            <div className="sticky-card" style={{ '--card-top': '4rem', '--card-z': 4 } as React.CSSProperties}>
               <ImageFeatureCard
                 icon={<Robot size={32} weight="light" />}
                 title="KI für Fokus statt Verwaltung"
@@ -657,7 +662,7 @@ export default function Landing() {
                 }}
               />
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 
