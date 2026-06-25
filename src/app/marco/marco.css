@@ -1,0 +1,82 @@
+.marco-page {
+  font-family: var(--font-instrument), system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+.marco-page .marco-serif {
+  font-family: var(--font-lustria), Georgia, serif;
+}
+
+.marco-page .marco-script {
+  font-family: var(--font-allison), cursive;
+  font-style: normal;
+  font-size: 1.35em;
+  line-height: 1;
+}
+
+.marco-glow {
+  background: radial-gradient(
+    ellipse 90% 70% at 50% -5%,
+    rgba(255, 200, 120, 0.45) 0%,
+    rgba(247, 129, 84, 0.2) 35%,
+    rgba(255, 255, 255, 0) 72%
+  );
+}
+
+.nav-mark-slot {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-mark-shell {
+  display: inline-flex;
+  opacity: 0;
+  transform: rotate(-110deg) scale(0.35);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.nav-mark-shell--active {
+  opacity: 1;
+  animation: nav-mark-arrive 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.nav-mark-spin {
+  display: inline-flex;
+  transform-origin: center center;
+}
+
+.nav-mark-spin--on {
+  animation: nav-mark-drift 26s linear infinite;
+}
+
+.nav-mark-glyph {
+  display: block;
+}
+
+@keyframes nav-mark-arrive {
+  0% {
+    transform: rotate(-110deg) scale(0.35);
+    opacity: 0;
+  }
+  65% {
+    transform: rotate(14deg) scale(1.06);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes nav-mark-drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

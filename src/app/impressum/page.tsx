@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { LiquidGradient } from "@/components/ui/liquid-gradient";
+import { SiteFooter } from "@/components/site-footer";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -56,6 +57,7 @@ export default function Impressum() {
             >
               ← Zurück
             </Link>
+            <SiteFooter />
           </div>
         </div>
       </LiquidGradient>

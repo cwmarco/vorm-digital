@@ -14,8 +14,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "vorm.digital | Coming Soon",
-  description: "Digital experiences, crafted with precision",
+  title: "vorm.digital | Digitales Marketing aus einer Hand",
+  description:
+    "VORM.DIGITAL — Berliner Marketing-Agentur für SEO, Websites, Paid Media und Reporting. Ganzheitliche digitale Lösungen aus einer Hand.",
 };
 
 export default function RootLayout({
