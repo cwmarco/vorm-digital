@@ -1,9 +1,13 @@
 "use client";
 
-import { marcoLocales, useMarcoLocale } from "@/components/marco/marco-locale-provider";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { marcoLocalePath, resolveMarcoLocaleFromPath } from "@/lib/marco-seo";
+import { marcoLocales } from "@/components/marco/marco-locale-provider";
 
 export function MarcoLanguageFlags({ className = "" }: { className?: string }) {
-  const { locale, setLocale } = useMarcoLocale();
+  const pathname = usePathname();
+  const activeLocale = resolveMarcoLocaleFromPath(pathname) ?? "en";
 
   return (
     <div
@@ -12,7 +16,7 @@ export function MarcoLanguageFlags({ className = "" }: { className?: string }) {
       aria-label="Language"
     >
       {marcoLocales.map(({ code, label }, index) => {
-        const active = locale === code;
+        const active = activeLocale === code;
         return (
           <span key={code} className="inline-flex items-center gap-2.5">
             {index > 0 && (
@@ -20,11 +24,11 @@ export function MarcoLanguageFlags({ className = "" }: { className?: string }) {
                 ·
               </span>
             )}
-            <button
-              type="button"
-              onClick={() => setLocale(code)}
+            <Link
+              href={marcoLocalePath(code)}
+              hrefLang={code}
               aria-label={label}
-              aria-pressed={active}
+              aria-current={active ? "true" : undefined}
               className={`uppercase tracking-[0.08em] transition-colors ${
                 active
                   ? "text-[#3B3B3B]"
@@ -32,7 +36,7 @@ export function MarcoLanguageFlags({ className = "" }: { className?: string }) {
               }`}
             >
               {code}
-            </button>
+            </Link>
           </span>
         );
       })}

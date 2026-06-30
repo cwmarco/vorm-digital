@@ -7,10 +7,11 @@ import {
 } from "@/components/marco/marco-locale-provider";
 import { MarcoNav } from "@/components/marco/marco-nav";
 import { MarcoStorySection } from "@/components/marco/marco-story-section";
+import type { MarcoLocale } from "@/components/marco/marco-translations";
 
-export function MarcoPageContent() {
+export function MarcoPageContent({ initialLocale }: { initialLocale: MarcoLocale }) {
   return (
-    <MarcoLocaleProvider>
+    <MarcoLocaleProvider initialLocale={initialLocale}>
       <div className="marco-glow fixed inset-x-0 top-0 h-[480px] pointer-events-none z-0" />
       <MarcoNav />
 

@@ -19,12 +19,6 @@ const allison = Allison({
   variable: "--font-allison",
 });
 
-export const metadata: Metadata = {
-  title: "Marco Günder | Growth & Operations Partner",
-  description:
-    "Marketing and CRM systems from strategy through execution. 15 years across digital and offline channels.",
-};
-
 export default function MarcoLayout({
   children,
 }: Readonly<{

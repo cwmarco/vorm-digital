@@ -25,7 +25,7 @@ export default function Datenschutz() {
             <h2 className="text-lg text-[#1A2E35] mb-3">1. Verantwortlicher</h2>
             <p>
               VORM.DIGITAL<br />
-              Marco Günder<br />
+              Marco Günder (Geb. Eggens)<br />
               Dänenstraße 8<br />
               10436 Berlin<br />
               Deutschland<br />

@@ -41,7 +41,7 @@ export default function Impressum() {
         <div className="flex flex-col justify-center min-h-screen px-8 py-16 font-[family-name:var(--font-fraunces)]">
           <div className="text-[#3D5A56]/60 text-sm space-y-1 max-w-md mx-auto">
             <p className="text-[#1A2E35] font-medium mb-4">VORM.DIGITAL</p>
-            <p>Inhaber: Marco Günder</p>
+            <p>Inhaber: Marco Günder (Geb. Eggens)</p>
             <p>Dänenstraße 8</p>
             <p>10436 Berlin</p>
             <p>Deutschland</p>

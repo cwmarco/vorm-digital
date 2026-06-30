@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 
@@ -19,13 +20,15 @@ export const metadata: Metadata = {
     "VORM.DIGITAL — Berliner Marketing-Agentur für SEO, Websites, Paid Media und Reporting. Ganzheitliche digitale Lösungen aus einer Hand.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const lang = (await headers()).get("x-page-lang") ?? "de";
+
   return (
-    <html lang="de" className="h-full">
+    <html lang={lang} className="h-full">
       <body className={`${fraunces.variable} ${outfit.variable} font-serif antialiased h-full`}>
         {children}
       </body>

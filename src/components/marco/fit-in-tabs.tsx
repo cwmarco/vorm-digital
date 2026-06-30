@@ -3,25 +3,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useMarcoLocale } from "@/components/marco/marco-locale-provider";
 import type { MarcoSegmentCopy } from "@/components/marco/marco-translations";
-import { MarcoFadeReveal } from "@/components/marco/marco-motion";
 
 type SegmentId = MarcoSegmentCopy["id"];
 
-function SegmentDetail({
-  segment,
-  locale,
-  large,
-}: {
-  segment: MarcoSegmentCopy;
-  locale: string;
-  large?: boolean;
-}) {
+function SegmentDetail({ segment, large }: { segment: MarcoSegmentCopy; large?: boolean }) {
   const bodyClass = large
     ? "text-xl md:text-2xl leading-9 text-[#3B3B3B]/80"
     : "text-base leading-relaxed text-[#3B3B3B]/80";
 
   return (
-    <MarcoFadeReveal locale={locale}>
+    <div>
       <p
         className={`mb-8 text-[#3B3B3B] ${
           large ? "text-xl md:text-2xl leading-9" : "text-lg leading-relaxed"
@@ -37,7 +28,7 @@ function SegmentDetail({
           </p>
         ))}
       </div>
-    </MarcoFadeReveal>
+    </div>
   );
 }
 
@@ -106,11 +97,9 @@ export function FitInTabs() {
 
   return (
     <div>
-      <MarcoFadeReveal key={`title-mobile-${locale}`} locale={locale} margin="-60px">
-        <h2 className="marco-serif text-3xl md:text-4xl text-[#3B3B3B] mb-10 md:hidden">
-          {t.experience.title}
-        </h2>
-      </MarcoFadeReveal>
+      <h2 className="marco-serif text-3xl md:text-4xl text-[#3B3B3B] mb-10 md:hidden">
+        {t.experience.title}
+      </h2>
 
       <div className="md:hidden">
         <div className="flex flex-wrap gap-2 mb-10">
@@ -129,11 +118,7 @@ export function FitInTabs() {
             </button>
           ))}
         </div>
-        <SegmentDetail
-          key={`${locale}-${activeSegment.id}`}
-          locale={locale}
-          segment={activeSegment}
-        />
+        <SegmentDetail key={`${locale}-${activeSegment.id}`} segment={activeSegment} />
       </div>
 
       <div className="hidden md:grid md:grid-cols-[minmax(260px,340px)_1fr] md:gap-20 lg:gap-28">
@@ -157,9 +142,7 @@ export function FitInTabs() {
         </div>
 
         <div>
-          <MarcoFadeReveal key={`title-desktop-${locale}`} locale={locale} margin="-80px">
-            <h2 className="marco-serif text-4xl text-[#3B3B3B] mb-16">{t.experience.title}</h2>
-          </MarcoFadeReveal>
+          <h2 className="marco-serif text-4xl text-[#3B3B3B] mb-16">{t.experience.title}</h2>
 
           {segments.map((segment, index) => (
             <article
@@ -172,7 +155,7 @@ export function FitInTabs() {
                 index < segments.length - 1 ? "min-h-[92vh] pb-28" : "pb-16"
               }`}
             >
-              <SegmentDetail locale={locale} segment={segment} large />
+              <SegmentDetail segment={segment} large />
             </article>
           ))}
         </div>

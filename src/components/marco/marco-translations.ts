@@ -16,6 +16,7 @@ export type MarcoCopy = {
     bookACall: string;
   };
   story: {
+    name: string;
     headline: string;
     intro: [string, string, string];
     questionsLead: string;
@@ -88,6 +89,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
       bookACall: "Book a Call",
     },
     story: {
+      name: "Marco Günder",
       headline: "Your Growth & Operations Partner",
       intro: [
         "I help businesses make their marketing work better.",
@@ -134,6 +136,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
       bookACall: "Termin buchen",
     },
     story: {
+      name: "Marco Günder",
       headline: "Partner für Wachstum und Operations",
       intro: [
         "Ich helfe Unternehmen, ihr Marketing besser zum Laufen zu bringen.",
@@ -220,6 +223,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
       bookACall: "Plan een gesprek",
     },
     story: {
+      name: "Marco Eggens",
       headline: "Partner voor groei en operations",
       intro: [
         "Marketing beter laten werken.",

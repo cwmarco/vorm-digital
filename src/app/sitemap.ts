@@ -1,22 +1,37 @@
 import type { MetadataRoute } from "next";
+import { marcoAbsoluteUrl } from "@/lib/marco-seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   return [
     {
       url: "https://vorm.digital",
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://vorm.digital/marco",
-      lastModified: new Date(),
+      url: marcoAbsoluteUrl("en"),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: marcoAbsoluteUrl("de"),
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: marcoAbsoluteUrl("nl"),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
       url: "https://vorm.digital/datenschutz",
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "yearly",
       priority: 0.3,
     },
