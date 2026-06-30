@@ -1,79 +1,27 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useMarcoLocale } from "@/components/marco/marco-locale-provider";
+import type { MarcoSegmentCopy } from "@/components/marco/marco-translations";
+import { MarcoFadeReveal } from "@/components/marco/marco-motion";
 
-type SegmentId = "smb" | "startup" | "established";
+type SegmentId = MarcoSegmentCopy["id"];
 
-type Segment = {
-  id: SegmentId;
-  navLabel: string;
-  contentLabel: string;
-  headline: string;
-  body: string[];
-  tags: string[];
-};
+function SegmentDetail({
+  segment,
+  locale,
+  large,
+}: {
+  segment: MarcoSegmentCopy;
+  locale: string;
+  large?: boolean;
+}) {
+  const bodyClass = large
+    ? "text-xl md:text-2xl leading-9 text-[#3B3B3B]/80"
+    : "text-base leading-relaxed text-[#3B3B3B]/80";
 
-const segments: Segment[] = [
-  {
-    id: "smb",
-    navLabel: "Medium Small Business",
-    contentLabel: "Small Medium Businesses",
-    headline: "All channels, one partner.",
-    body: [
-      "I help define your brand, offer, and positioning. I support strategic decisions (e.g. Should I get on Instagram?). I handle every marketing channel and will even sort out your website and reviews. From strategy through execution, with very little input needed from your side.",
-      "I stay hands-on because I love the craft.",
-    ],
-    tags: [
-      "Healthcare",
-      "Spa & Beauty",
-      "Aesthetic Surgery",
-      "Orthodontics",
-      "Longevity",
-      "Premium Services",
-      "Offer & Positioning",
-      "Google & Meta Ads",
-      "SEO & AI Search",
-      "Web Design",
-    ],
-  },
-  {
-    id: "startup",
-    navLabel: "Start-Up",
-    contentLabel: "Start-Up",
-    headline: "Launch fast & learn fast.",
-    body: [
-      "I build lean marketing systems that test, measure, and scale what works. I plug into your tech stack and team seamlessly. Project-based or ongoing, from setting up channels to leading launches.",
-      "I love seeing direct impact at scale.",
-      "I've managed teams of up to 15 people across various different markets.",
-    ],
-    tags: [
-      "Leadership of multidisciplinary teams",
-      "Marketplaces | Services | Travel | Medical",
-      "B2B & B2C",
-      "EU, US & UK markets",
-    ],
-  },
-  {
-    id: "established",
-    navLabel: "Established",
-    contentLabel: "Established",
-    headline: "Strategic projects with implementation.",
-    body: [
-      "Solo projects like channel builds and product launches, or embedded with your teams for growth initiatives and efficiency drives.",
-      "Never just slides: always strategy plus execution.",
-    ],
-    tags: [
-      "Leadership of multidisciplinary teams",
-      "Marketplaces | Services | Travel | Medical",
-      "B2B & B2C",
-      "EU, US & UK markets",
-    ],
-  },
-];
-
-function SegmentDetail({ segment, large }: { segment: Segment; large?: boolean }) {
   return (
-    <div>
+    <MarcoFadeReveal locale={locale}>
       <p
         className={`mb-8 text-[#3B3B3B] ${
           large ? "text-xl md:text-2xl leading-9" : "text-lg leading-relaxed"
@@ -82,30 +30,20 @@ function SegmentDetail({ segment, large }: { segment: Segment; large?: boolean }
         <span className="text-[#3B3B3B]/55 font-medium">{segment.contentLabel}:</span>{" "}
         <strong className="font-semibold">{segment.headline}</strong>
       </p>
-      <div
-        className={`space-y-6 text-[#3B3B3B]/80 mb-10 ${
-          large ? "text-xl md:text-2xl leading-9" : "text-base leading-relaxed"
-        }`}
-      >
+      <div className="space-y-6">
         {segment.body.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+          <p key={paragraph} className={bodyClass}>
+            {paragraph}
+          </p>
         ))}
       </div>
-      <div className="flex flex-wrap gap-2">
-        {segment.tags.map((tag) => (
-          <span
-            key={tag}
-            className="text-sm px-3 py-2 rounded-full border border-[#E8E8E8] text-[#555] bg-[#FAFAFA]"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-    </div>
+    </MarcoFadeReveal>
   );
 }
 
 export function FitInTabs() {
+  const { t, locale } = useMarcoLocale();
+  const segments = t.experience.segments;
   const [active, setActive] = useState<SegmentId>("smb");
   const sectionRefs = useRef<Record<SegmentId, HTMLElement | null>>({
     smb: null,
@@ -113,6 +51,10 @@ export function FitInTabs() {
     established: null,
   });
   const isClickScrolling = useRef(false);
+
+  useEffect(() => {
+    setActive("smb");
+  }, [locale]);
 
   useEffect(() => {
     const media = window.matchMedia("(min-width: 768px)");
@@ -145,7 +87,7 @@ export function FitInTabs() {
     updateActive();
     window.addEventListener("scroll", updateActive, { passive: true });
     return () => window.removeEventListener("scroll", updateActive);
-  }, []);
+  }, [segments]);
 
   const scrollToSegment = (id: SegmentId) => {
     const el = sectionRefs.current[id];
@@ -164,11 +106,12 @@ export function FitInTabs() {
 
   return (
     <div>
-      <h2 className="marco-serif text-3xl md:text-4xl text-[#3B3B3B] mb-10 md:hidden">
-        Here&apos;s How I Fit In
-      </h2>
+      <MarcoFadeReveal key={`title-mobile-${locale}`} locale={locale} margin="-60px">
+        <h2 className="marco-serif text-3xl md:text-4xl text-[#3B3B3B] mb-10 md:hidden">
+          {t.experience.title}
+        </h2>
+      </MarcoFadeReveal>
 
-      {/* Mobile */}
       <div className="md:hidden">
         <div className="flex flex-wrap gap-2 mb-10">
           {segments.map((item) => (
@@ -186,11 +129,14 @@ export function FitInTabs() {
             </button>
           ))}
         </div>
-        <SegmentDetail segment={activeSegment} />
+        <SegmentDetail
+          key={`${locale}-${activeSegment.id}`}
+          locale={locale}
+          segment={activeSegment}
+        />
       </div>
 
-      {/* Desktop */}
-      <div className="hidden md:grid md:grid-cols-[minmax(220px,300px)_1fr] md:gap-20 lg:gap-28">
+      <div className="hidden md:grid md:grid-cols-[minmax(260px,340px)_1fr] md:gap-20 lg:gap-28">
         <div className="relative">
           <div className="sticky top-[10.5rem] pt-8 border-t border-[#E8E8E8] space-y-5">
             {segments.map((item) => (
@@ -211,13 +157,13 @@ export function FitInTabs() {
         </div>
 
         <div>
-          <h2 className="marco-serif text-4xl text-[#3B3B3B] mb-16">
-            Here&apos;s How I Fit In
-          </h2>
+          <MarcoFadeReveal key={`title-desktop-${locale}`} locale={locale} margin="-80px">
+            <h2 className="marco-serif text-4xl text-[#3B3B3B] mb-16">{t.experience.title}</h2>
+          </MarcoFadeReveal>
 
           {segments.map((segment, index) => (
             <article
-              key={segment.id}
+              key={`${locale}-${segment.id}`}
               id={`segment-${segment.id}`}
               ref={(el) => {
                 sectionRefs.current[segment.id] = el;
@@ -226,7 +172,7 @@ export function FitInTabs() {
                 index < segments.length - 1 ? "min-h-[92vh] pb-28" : "pb-16"
               }`}
             >
-              <SegmentDetail segment={segment} large />
+              <SegmentDetail locale={locale} segment={segment} large />
             </article>
           ))}
         </div>

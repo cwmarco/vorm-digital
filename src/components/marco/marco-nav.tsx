@@ -1,17 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { MarcoLanguageFlags } from "@/components/marco/marco-language-flags";
+import { useMarcoLocale } from "@/components/marco/marco-locale-provider";
 import { NavOrganicMark } from "@/components/marco/nav-organic-mark";
+import { scrollToSection } from "@/components/marco/marco-motion";
 
 const CAL_URL = "https://cal.com/marco-ennmyq/site-intro";
 
-const navLinks = [
-  { href: "#story", id: "story", label: "Story" },
-  { href: "#experience", id: "experience", label: "Experience" },
-  { href: "#contact", id: "contact", label: "Contact" },
-] as const;
-
-type SectionId = (typeof navLinks)[number]["id"];
+const navIds = ["story", "experience", "contact"] as const;
+type SectionId = (typeof navIds)[number];
 
 function PhoneIcon() {
   return (
@@ -28,7 +26,14 @@ function PhoneIcon() {
 }
 
 export function MarcoNav() {
+  const { t } = useMarcoLocale();
   const [active, setActive] = useState<SectionId>("story");
+
+  const navLinks = [
+    { href: "#story", id: "story" as const, label: t.nav.story },
+    { href: "#experience", id: "experience" as const, label: t.nav.experience },
+    { href: "#contact", id: "contact" as const, label: t.nav.contact },
+  ];
 
   useEffect(() => {
     const updateActive = () => {
@@ -73,6 +78,10 @@ export function MarcoNav() {
             <a
               key={link.id}
               href={link.href}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(link.id);
+              }}
               className={`flex items-center gap-2 text-xs transition-colors ${
                 isActive ? "text-[#3B3B3B]" : "text-[#3B3B3B]/55 hover:text-[#3B3B3B]/80"
               }`}
@@ -82,6 +91,8 @@ export function MarcoNav() {
             </a>
           );
         })}
+
+        <MarcoLanguageFlags className="mt-4 pt-4 border-t border-[#E8E8E8]" />
       </nav>
 
       <a
@@ -90,18 +101,19 @@ export function MarcoNav() {
         rel="noopener noreferrer"
         className="fixed right-8 top-9 z-50 hidden md:flex items-center gap-2 text-xs text-[#3B3B3B] hover:opacity-70 transition-opacity"
       >
-        Book a Call
+        {t.nav.bookACall}
         <PhoneIcon />
       </a>
 
-      <div className="md:hidden fixed top-0 inset-x-0 z-50 flex justify-end px-6 py-4 bg-white/70 backdrop-blur-sm">
+      <div className="md:hidden fixed top-0 inset-x-0 z-50 flex items-center justify-between px-6 py-4 bg-white/70 backdrop-blur-sm">
+        <MarcoLanguageFlags />
         <a
           href={CAL_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-xs text-[#3B3B3B]"
         >
-          Book a Call
+          {t.nav.bookACall}
           <PhoneIcon />
         </a>
       </div>

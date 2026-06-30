@@ -10,7 +10,7 @@ const fraunces = Fraunces({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["700"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="de" className="h-full">
       <body className={`${fraunces.variable} ${outfit.variable} font-serif antialiased h-full`}>
         {children}
       </body>
