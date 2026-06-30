@@ -26,12 +26,11 @@ const MarcoLocaleContext = createContext<MarcoLocaleContextValue | null>(null);
 
 export const marcoLocales: {
   code: MarcoLocale;
-  flag: string;
   label: string;
 }[] = [
-  { code: "en", flag: "🇬🇧", label: "English" },
-  { code: "de", flag: "🇩🇪", label: "Deutsch" },
-  { code: "nl", flag: "🇳🇱", label: "Nederlands" },
+  { code: "en", label: "English" },
+  { code: "de", label: "Deutsch" },
+  { code: "nl", label: "Nederlands" },
 ];
 
 function isMarcoLocale(value: string): value is MarcoLocale {

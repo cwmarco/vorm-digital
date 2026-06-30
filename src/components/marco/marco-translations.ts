@@ -128,7 +128,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
   },
   de: {
     nav: {
-      story: "Story",
+      story: "Hintergrund",
       experience: "Erfahrung",
       contact: "Kontakt",
       bookACall: "Termin buchen",
@@ -152,7 +152,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
         "Aus den Antworten entstehen Kampagnen, Content, Websites, CRM-Flows, Reporting und bessere Kundenerlebnisse.",
       tagline:
         "Von Strategie bis Umsetzung. Senior, praktisch, hands-on und unterstützt durch smarte AI-Systeme.",
-      myStoryTitle: "Meine Geschichte",
+      myStoryTitle: "Hintergrund",
       myStory: [
         "Seit 15 Jahren arbeite ich in Marketing und CRM, vor allem für Produkte und Dienstleistungen, bei denen Vertrauen wichtig ist.",
         "In dieser Zeit habe ich breite Erfahrung aufgebaut: Marke, Positionierung, Paid Marketing, CRM, Websites, Sales Enablement, Offline-Marketing und Teamführung.",
@@ -214,7 +214,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
   },
   nl: {
     nav: {
-      story: "Verhaal",
+      story: "Achtergrond",
       experience: "Ervaring",
       contact: "Contact",
       bookACall: "Plan een gesprek",
@@ -238,7 +238,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
         "Daarna worden de antwoorden vertaald naar campagnes, content, websites, CRM-flows, reporting en betere klantervaringen.",
       tagline:
         "Van strategie tot uitvoering. Senior, praktisch, hands-on en ondersteund door slimme AI-systemen.",
-      myStoryTitle: "Mijn verhaal",
+      myStoryTitle: "Achtergrond",
       myStory: [
         "Al 15 jaar werk ik in marketing en CRM, vooral voor producten en diensten waarbij vertrouwen belangrijk is.",
         "In die tijd heb ik brede ervaring opgebouwd in merk, positionering, paid marketing, CRM, websites, sales enablement en teamleiderschap.",
