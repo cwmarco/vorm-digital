@@ -223,7 +223,7 @@ export const marcoTranslations: Record<MarcoLocale, MarcoCopy> = {
       bookACall: "Plan een gesprek",
     },
     story: {
-      name: "Marco Eggens",
+      name: "Marco Günder",
       headline: "Partner voor groei en operations",
       intro: [
         "Marketing beter laten werken.",

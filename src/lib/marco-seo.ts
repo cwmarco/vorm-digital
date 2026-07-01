@@ -35,7 +35,7 @@ const marcoMeta: Record<
     ogLocale: "de_DE",
   },
   nl: {
-    title: "Marco Eggens | Partner voor groei en operations",
+    title: "Marco Günder | Partner voor groei en operations",
     description:
       "Marketing en CRM van strategie tot uitvoering. 15 jaar ervaring in merk, paid media, SEO, websites, CRM en teamleiderschap voor health, beauty en premium dienstverleners.",
     ogLocale: "nl_NL",
@@ -72,12 +72,9 @@ export function marcoMetadata(locale: MarcoLocale): Metadata {
 export function marcoPersonJsonLd(locale: MarcoLocale): object {
   const t = marcoTranslations[locale];
   const url = marcoAbsoluteUrl(locale);
-  const isNl = locale === "nl";
 
-  const primaryName = isNl ? "Marco Eggens" : "Marco Günder";
-  const alternateNames = ["Marco Günder", "Marco Eggens"].filter(
-    (name) => name !== primaryName,
-  );
+  const primaryName = "Marco Günder";
+  const alternateNames = ["Marco Eggens"];
 
   return {
     "@context": "https://schema.org",
