@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /logo-guidelines.html
+Disallow: /presentations/
 
 Sitemap: https://vorm.digital/sitemap.xml
