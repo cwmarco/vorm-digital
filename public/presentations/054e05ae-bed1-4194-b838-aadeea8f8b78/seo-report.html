@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <title>Capital Aesthetics · AI-Sichtbarkeit (GEO)</title>
+    <style>
+      :root {
+        --bg: #f8f9f2;
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --accent: #15803d;
+        --border: #e5e7eb;
+        --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        line-height: 1.55;
+      }
+      .wrap { width: min(1080px, calc(100vw - 40px)); margin: 0 auto; padding: 48px 0 80px; }
+      header { border-bottom: 1px solid var(--border); padding-bottom: 22px; margin-bottom: 8px; }
+      .kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+      h1 { font-size: clamp(1.9rem, 3vw, 2.6rem); font-weight: 700; letter-spacing: -0.02em; margin: 0; }
+      .lede { color: var(--muted); font-size: 1.05rem; max-width: 60rem; margin: 12px 0 0; }
+      figure {
+        margin: 28px 0 0;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: 0 8px 22px rgba(16, 24, 40, 0.06);
+        overflow: hidden;
+      }
+      figure img { display: block; width: 100%; height: auto; }
+      footer { margin-top: 40px; color: var(--muted); font-size: 0.85rem; }
+      a.back { display: inline-block; margin-top: 8px; color: var(--accent); text-decoration: none; font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#f8f9f2;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+      <form id="pw-form" style="width:min(360px,90vw);background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 34px rgba(16,24,40,.08);padding:28px 26px;">
+        <div style="font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#15803d;margin-bottom:10px;">Capital Aesthetics</div>
+        <label for="pw-input" style="display:block;font-weight:700;color:#1f2937;margin-bottom:12px;">Passwort</label>
+        <input id="pw-input" type="password" autocomplete="current-password" autofocus style="width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d1d5db;border-radius:9px;font-size:1rem;" />
+        <button type="submit" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:9px;background:#15803d;color:#fff;font-weight:700;font-size:1rem;cursor:pointer;">Ansehen</button>
+        <p id="pw-err" style="display:none;margin:12px 0 0;color:#b91c1c;font-size:.9rem;">Falsches Passwort.</p>
+      </form>
+    </div>
+    <script>
+    (function(){
+      var HASH="ce2b95b9e8f04c4ab8fe2c2c2d38e9185b7830261a1402496ccc927b199a49e7";
+      var KEY="ca-pres-ok";
+      var gate=document.getElementById('pw-gate');
+      if(sessionStorage.getItem(KEY)==="1"){ gate.remove(); return; }
+      document.documentElement.style.overflow="hidden";
+      async function sha(s){var b=new TextEncoder().encode(s);var d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+      document.getElementById('pw-form').addEventListener('submit',async function(e){
+        e.preventDefault();
+        var h=await sha(document.getElementById('pw-input').value);
+        if(h===HASH){ sessionStorage.setItem(KEY,"1"); document.documentElement.style.overflow=""; gate.remove(); }
+        else { document.getElementById('pw-err').style.display="block"; }
+      });
+    })();
+    </script>
+
+    <div class="wrap">
+      <header>
+        <p class="kicker">Capital Aesthetics · GEO</p>
+        <h1>AI-Sichtbarkeit: Wie KI-Modelle Capital Aesthetics sehen</h1>
+        <p class="lede">Auszug aus unserem internen Portal. Wir tracken laufend, ob und wie ChatGPT, Gemini und Claude Capital Aesthetics bei relevanten Behandlungsfragen nennen, plus Wettbewerbsvergleich und Baseline über die Zeit. Bewusst technisch, zeigt die Tiefe der laufenden Arbeit.</p>
+      </header>
+
+      <figure><img src="geo/geo-1.png" alt="GEO · AI Visibility – Übersicht und Visibility Over Time" /></figure>
+      <figure><img src="geo/geo-2.png" alt="AI Discovery Score (Type A, unprompted)" /></figure>
+      <figure><img src="geo/geo-3.png" alt="Tracked Query Set" /></figure>
+      <figure><img src="geo/geo-4.png" alt="Type A · AI Discovery" /></figure>
+      <figure><img src="geo/geo-5.png" alt="Type B · Suitability" /></figure>
+      <figure><img src="geo/geo-6.png" alt="Brand Perception – ChatGPT, Gemini, Claude" /></figure>
+      <figure><img src="geo/geo-7.png" alt="Competitor Intelligence" /></figure>
+
+      <footer>
+        <div>Stand: Baseline 2026-06-16 · interner Auszug, vertraulich.</div>
+        <a class="back" href="seo-plan.html">← Zurück zum SEO Plan</a>
+      </footer>
+    </div>
+  </body>
+</html>
