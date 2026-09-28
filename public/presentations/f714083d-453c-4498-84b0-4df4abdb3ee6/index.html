@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <title>Capital Aesthetics · SEO &amp; GEO Update 24.09.2026</title>
+    <link rel="stylesheet" href="./theme.css" />
+    <style>
+      /* four status columns on the "Seiten" slide; stacks on phones like the theme's other grids */
+      .panel-grid.four-col { grid-template-columns: repeat(4, 1fr); }
+      @media (max-width: 860px) { .panel-grid.four-col { grid-template-columns: 1fr; } }
+
+      /* Instagram content table (scrolls inside its wrapper, header stays pinned) */
+      .igtable > .title { max-width:none; }
+      .igtable > .lede-line { font-size:15px; margin:0 0 8px; }
+      .igtable .table-wrap { max-height:calc(100vh - 372px); min-height:160px; overflow:auto; border-top:1px solid var(--border); }
+      .igtable .table-wrap:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+      .ig-table { width:100%; min-width:760px; border-collapse:separate; border-spacing:0; font-size:13.5px; line-height:1.3; }
+      .ig-table th, .ig-table td { text-align:left; vertical-align:top; padding:6px 12px 6px 0; border-bottom:1px solid var(--border); }
+      .ig-table thead th { position:sticky; top:0; z-index:2; background:var(--background); font-size:11.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding-top:8px; padding-bottom:7px; border-bottom:1px solid var(--muted); }
+      .ig-table .num { text-align:right; font-variant-numeric:tabular-nums; padding-right:22px; width:11%; }
+      .ig-table tbody th[scope="row"] { font-weight:600; width:24%; }
+      .ig-table tr.grp th { padding:12px 0 4px; font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-strong); border-bottom:none; }
+      .igtable .notes { margin:8px 0 0; font-size:12px; line-height:1.4; color:var(--muted); }
+
+      /* "Wie es weitergeht": each step next to the block prepared for it */
+      .joined > .title { max-width:none; margin-bottom:6px; }
+      .joined .lede-line { font-size:15px; margin:0 0 10px; }
+      .joined li, .joined p { font-size:15px; line-height:1.45; }
+      .joined .steps-head, .joined .step { display:grid; grid-template-columns:34px 1fr 290px; gap:20px; }
+      .joined .steps-head { padding:0 0 6px; font-size:11.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+      .joined .step { padding:12px 0; border-top:1px solid var(--border); }
+      .joined .step .chip { margin:0; justify-self:start; align-self:start; }
+      .joined .step h4 { margin:0 0 4px; font-size:15px; font-weight:700; }
+      .joined .step p { margin:0; }
+      .joined .prep p + p { margin-top:8px; }
+      .joined .prep { border-left:3px solid var(--accent); padding-left:14px; }
+      .joined .closing { margin:12px 0 0; padding-top:12px; border-top:1px solid var(--border); font-size:16px; }
+      @media (max-width: 860px) {
+        .joined .steps-head { display:none; }
+        .joined .step { grid-template-columns:34px 1fr; gap:10px 14px; }
+        .joined .step .prep { grid-column:2; }
+      }
+
+      /* design slide: reference link */
+      .ref { margin:8px 0 0; padding-top:10px; border-top:1px solid var(--border); font-size:15px; }
+      .ref a { color:var(--accent-strong); font-weight:600; text-decoration:underline; text-underline-offset:3px; }
+
+      /* Brust und Nase, Was zählt */
+      .bn > .title, .reward > .title { max-width:none; font-size:30px; margin-bottom:4px; }
+      .bn > .lede-line { font-size:15px; margin:0 0 10px; }
+      .bn .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:16px; }
+      .bn .stat { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:12px 18px; }
+      .bn .stat b { display:block; font-size:30px; line-height:1.15; font-weight:700; color:var(--accent-strong); }
+      .bn .stat span { display:block; margin-top:3px; font-size:14px; line-height:1.35; color:var(--muted); }
+      .bn .bars { display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+      .bn .bar-col h3 { margin:0 0 8px; font-size:16px; font-weight:700; color:var(--accent-strong); }
+      .bn .bar-row { display:grid; grid-template-columns:210px 1fr 32px; gap:12px; align-items:center; padding:6px 0; font-size:14.5px; }
+      .bn .bar-row .bar-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+      .bn .bar-row.cap .bar-name, .bn .bar-row.cap b { font-weight:700; }
+      .bn .bar-track { display:block; height:16px; }
+      .bn .bar-track i { display:block; height:100%; background:#94a3a0; border-radius:4px; }
+      .bn .bar-row.cap .bar-track i { background:var(--accent); }
+      .bn .bar-row b { text-align:right; font-variant-numeric:tabular-nums; }
+      .bn .notes { margin:12px 0 0; font-size:12.5px; line-height:1.4; color:var(--muted); }
+      .reward .factors { margin-top:8px; }
+      .reward .factor { display:grid; grid-template-columns:210px 1fr; gap:24px; align-items:baseline; padding:17px 0; border-top:1px solid var(--border); }
+      .reward .factor b { font-size:18px; color:var(--accent-strong); }
+      .reward .factor p { margin:0; font-size:18px; line-height:1.4; max-width:none; }
+      .reward .factor .chip { margin:0; }
+      .reward .closing { margin:18px 0 0; padding-top:16px; border-top:2px solid var(--accent); font-size:19px; line-height:1.45; max-width:none; }
+      @media (max-width: 860px) {
+        .bn .stats, .bn .bars { grid-template-columns:1fr; }
+        .bn .bar-row { grid-template-columns:130px 1fr 28px; }
+        .reward .factor { grid-template-columns:1fr; gap:4px; }
+      }
+
+      /* Meta Ads slides */
+      .meta > .title { max-width:none; font-size:30px; margin-bottom:4px; }
+      .meta > .lede-line { font-size:17px; margin:0 0 12px; }
+      .meta li, .meta p { font-size:18px; line-height:1.45; }
+      .meta h3 { font-size:19px; }
+      .meta .meta-cols { display:grid; grid-template-columns:7fr 5fr; gap:48px; align-items:start; }
+      .meta .meta-side { display:grid; gap:0; }
+      .meta .closing { margin:16px 0 0; padding-top:16px; border-top:2px solid var(--accent); font-size:20px; max-width:none; }
+      @media (max-width: 860px) { .meta .meta-cols { grid-template-columns:1fr; gap:0; } }
+
+
+      /* "Was umgesetzt wurde": tighter panels so the reference link fits above the footer */
+      #umsetzung .panel { padding-top:14px; padding-bottom:8px; }
+      #umsetzung .ref { margin:2px 0 0; padding-top:8px; }
+    </style>
+  </head>
+  <body>
+    <div id="pw-gate" style="position:fixed;inset:0;z-index:99999;background:#f8f9f2;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+      <form id="pw-form" style="width:min(360px,90vw);background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 12px 34px rgba(16,24,40,.08);padding:28px 26px;">
+        <div style="font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#15803d;margin-bottom:10px;">Capital Aesthetics</div>
+        <label for="pw-input" style="display:block;font-weight:700;color:#1f2937;margin-bottom:12px;">Passwort</label>
+        <input id="pw-input" type="password" autocomplete="current-password" autofocus style="width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #d1d5db;border-radius:9px;font-size:1rem;" />
+        <button type="submit" style="margin-top:14px;width:100%;padding:11px;border:none;border-radius:9px;background:#15803d;color:#fff;font-weight:700;font-size:1rem;cursor:pointer;">Ansehen</button>
+        <p id="pw-err" style="display:none;margin:12px 0 0;color:#b91c1c;font-size:.9rem;">Falsches Passwort.</p>
+      </form>
+    </div>
+    <script>
+    (function(){
+      var HASH="bcc3905b5b119049d93579f2908c0fe3e7cb090c318c3a51a337184ed9c79cda";
+      var KEY="ca-update-0924-ok";
+      var gate=document.getElementById('pw-gate');
+      if(sessionStorage.getItem(KEY)==="1"){ gate.remove(); return; }
+      document.documentElement.style.overflow="hidden";
+      async function sha(s){var b=new TextEncoder().encode(s);var d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(function(x){return x.toString(16).padStart(2,'0');}).join('');}
+      document.getElementById('pw-form').addEventListener('submit',async function(e){
+        e.preventDefault();
+        var h=await sha(document.getElementById('pw-input').value);
+        if(h===HASH){ sessionStorage.setItem(KEY,"1"); document.documentElement.style.overflow=""; gate.remove(); }
+        else { document.getElementById('pw-err').style.display="block"; }
+      });
+    })();
+    </script>
+
+    <main class="deck">
+
+      <!-- 01 Title -->
+      <section class="slide title-slide frame-free">
+        <div class="slide-inner">
+          <div></div>
+          <div class="hero">
+            <p class="kicker">Capital Aesthetics · SEO &amp; GEO</p>
+            <h1>Update: Was wir erreicht haben und wie es weitergeht.</h1>
+            <p class="lede">Was umgesetzt wurde, wie sich die bearbeiteten Seiten entwickeln und welche Schritte als Nächstes anstehen.</p>
+          </div>
+          <p class="muted">24. September 2026 · Vorbereitet für Capital Aesthetics</p>
+        </div>
+      </section>
+
+      <!-- 02 Inhalt -->
+      <section class="slide" id="inhalt">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Übersicht</span>
+            <span></span>
+          </div>
+          <div>
+            <h2 class="title">Inhalt</h2>
+            <div class="toc-grid">
+              <a class="toc-item" href="#kapitel-umsetzung">
+                <span>01</span>
+                <strong>Umsetzung und Zahlen</strong>
+                <p>Seiten, Bausteine, Gestaltung, Off-site und die Zahlen aus der Search Console.</p>
+              </a>
+              <a class="toc-item" href="#kapitel-weiter">
+                <span>02</span>
+                <strong>Wie es weitergeht</strong>
+                <p>Die nächsten Schritte und die Instagram-Inhalte für die Seiten.</p>
+              </a>
+              <a class="toc-item" href="#kapitel-chirurgie">
+                <span>03</span>
+                <strong>Plastische Chirurgie</strong>
+                <p>Brust und Nase: Ausgangslage, Wettbewerb und was zählt.</p>
+              </a>
+              <a class="toc-item" href="#kapitel-meta">
+                <span>04</span>
+                <strong>Meta Ads Proposal</strong>
+                <p>Ansatz, Aufbau und Zusammenarbeit.</p>
+              </a>
+            </div>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 1: Umsetzung und Zahlen -->
+      <section class="slide section-slide frame-free" id="kapitel-umsetzung">
+        <div class="slide-inner">
+          <div></div>
+          <div class="hero">
+            <p class="kicker">Kapitel 1</p>
+            <h1>Umsetzung und Zahlen</h1>
+          </div>
+          <p class="muted">SEO &amp; GEO Update</p>
+        </div>
+      </section>
+
+      <!-- 02 Seiten: Stand -->
+      <section class="slide" id="umsetzung">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Umsetzung · Seiten</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <h2 class="title">Was umgesetzt wurde</h2>
+            <p class="lede-line">So stehen die Behandlungs- und Arztseiten heute.</p>
+            <div class="panel-grid four-col">
+              <div class="panel">
+                <span class="chip done">Live</span>
+                <ul>
+                  <li>VOLNEWMER</li>
+                  <li>CO₂-Laser</li>
+                  <li>miraDry</li>
+                  <li>Arztseiten (5 Profile)</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip doing">Bereit zur Prüfung</span>
+                <ul>
+                  <li>Ultherapy PRIME</li>
+                  <li>Sculptra</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip doing">Bereit zur Veröffentlichung</span>
+                <ul>
+                  <li>Preservé</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip open">Gestartet</span>
+                <ul>
+                  <li>XERF</li>
+                  <li>Préime DermaFacial</li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel" style="margin-top: 8px;">
+              <h3>Interne Verlinkung</h3>
+              <p>Zu jeder Seite gehören auch kleine Anpassungen auf anderen Seiten: Verlinkungen, die Google zeigen, welche Seiten Priorität haben.</p>
+            </div>
+            <p class="ref">Ausgangspunkt: <a href="https://www.vorm.digital/presentations/054e05ae-bed1-4194-b838-aadeea8f8b78/seo-plan.html#roadmap-monat-1" target="_blank" rel="noopener noreferrer">Roadmap Monat 1 im SEO-Plan</a></p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Bausteine -->
+      <section class="slide" id="bausteine">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Umsetzung · Bausteine</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <h2 class="title">Neue Bausteine für die Seiten</h2>
+            <p class="lede-line">Wiederverwendbare Elemente, die auf jeder neuen Seite eingesetzt werden können.</p>
+            <div class="panel-grid three-col">
+              <div class="panel">
+                <span class="chip done">Fertig</span>
+                <ul>
+                  <li>Instagram-Slider: bereit, für jede neue Seite</li>
+                  <li>Doctor-Slider: bereit, kommt auf neue Seiten</li>
+                  <li>FAQ</li>
+                  <li>Facts, Ablauf, Preise, CTA: waren schon vorhanden, jetzt überarbeitet</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip doing">In Arbeit</span>
+                <ul>
+                  <li>„Warum Capital Aesthetics“: erste Version, noch nicht final</li>
+                  <li>Vorher/Nachher: noch nicht vollständig gebrieft</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip open">Noch nicht fertig</span>
+                <ul>
+                  <li>Reviews-Section</li>
+                </ul>
+              </div>
+            </div>
+            <p class="ref">Zu besprechen: Bedarf für die <a href="https://www.capital-aesthetics.de/" target="_blank" rel="noopener noreferrer">Startseite</a> und <a href="https://www.capital-aesthetics.de/ueber-uns/" target="_blank" rel="noopener noreferrer">„Über uns“</a>.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 Gestaltung offen -->
+      <section class="slide" id="gestaltung-offen">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Umsetzung · Gestaltung</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <h2 class="title">Aus Gestaltungssicht noch offen</h2>
+            <p class="lede-line">Aus Gestaltungssicht sind außerdem noch offen:</p>
+            <div class="panel-grid two-col">
+              <div class="panel">
+                <span class="chip blocked">Offen</span>
+                <h3>Die Startseite</h3>
+              </div>
+              <div class="panel">
+                <span class="chip blocked">Offen</span>
+                <h3>„Über uns“</h3>
+              </div>
+              <div class="panel">
+                <span class="chip blocked">Offen</span>
+                <h3>Die Einbindung von Patientenbewertungen</h3>
+              </div>
+              <div class="panel">
+                <span class="chip blocked">Offen</span>
+                <h3>Optimierung für Mobilgeräte</h3>
+                <p>Das neue GA-Setup zeigt: <strong>85 % kommen über Mobilgeräte.</strong> Deshalb machen wir die Seiten kompakter, zum Beispiel mit den neu gestalteten Accordions.</p>
+              </div>
+            </div>
+            <p class="ref">Gestaltungsreferenz: <a href="https://www.cadoganclinic.com/cosmetic-surgery/facial-surgery/facelift/" target="_blank" rel="noopener noreferrer">Facelift-Seite der Cadogan Clinic</a></p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 Off-site -->
+      <section class="slide" id="offsite">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Umsetzung · Off-site</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <h2 class="title">Off-site</h2>
+            <p class="lede-line">Die Einträge außerhalb der Website.</p>
+            <div class="panel-grid three-col">
+              <div class="panel">
+                <span class="chip done">Erledigt</span>
+                <ul>
+                  <li>Google Business Profile: Services aktualisiert</li>
+                  <li>Bing / Microsoft Places: synchronisiert</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip doing">Ausstehend</span>
+                <ul>
+                  <li>Apple Business Connect / Apple Maps</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <span class="chip open">Noch nicht gestartet</span>
+                <ul>
+                  <li>Weitere Plattformen</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 Zahlen (screenshot from Search Console analysis; native-chart version: reports/gsc-update-2026-09-24/build_deck_charts.py) -->
+      <section class="slide" id="zahlen">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Zahlen · Google Search Console</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <img
+              src="assets/seo-update-2026-09/gsc-bearbeitete-seiten-2026-09-24-clean.webp"
+              alt="Zwei Liniendiagramme: die sieben neuen und überarbeiteten Seiten im Vergleich zur Gesamtwebsite. Einblendungen bei Google: 960 auf 1.949 (plus 103 Prozent) gegenüber 69.560 auf 62.557 (minus 10 Prozent). Durchschnittliche Position: 17,1 auf 9,0 gegenüber 17,0 auf 15,6."
+              style="display:block;width:100%;max-height:calc(100vh - 262px);object-fit:contain;border-radius:12px;"
+            />
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 2: Wie es weitergeht -->
+      <section class="slide section-slide frame-free" id="kapitel-weiter">
+        <div class="slide-inner">
+          <div></div>
+          <div class="hero">
+            <p class="kicker">Kapitel 2</p>
+            <h1>Wie es weitergeht</h1>
+          </div>
+          <p class="muted">SEO &amp; GEO Update</p>
+        </div>
+      </section>
+
+      <!-- 06 Wie es weitergeht (steps and the block prepared for each) -->
+      <section class="slide" id="wie-es-weitergeht">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Ausblick</span>
+            <span></span>
+          </div>
+          <div class="body joined">
+            <h2 class="title">Wie es weitergeht</h2>
+            <p class="lede-line">Die bearbeiteten Seiten bewegen sich in die richtige Richtung. Jetzt geht es darum, die nächsten Verbesserungen schneller auf mehr relevante Seiten zu bringen. So gehen wir weiter vor:</p>
+            <div class="steps">
+              <div class="steps-head">
+                <span></span>
+                <span>Nächster Schritt</span>
+                <span>Dafür haben wir vorbereitet</span>
+              </div>
+              <div class="step">
+                <span class="chip doing">1</span>
+                <div>
+                  <h4>Vorhandene Inhalte auf die passenden Seiten bringen</h4>
+                  <p>Überall, wo wir relevante Instagram-Beiträge oder Videos haben, können wir diese einbinden. Dazu kommen authentische Einblicke in die Praxis und die Räumlichkeiten.</p>
+                </div>
+                <div class="prep">
+                  <p>Slider für Videos und Instagram-Beiträge</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="chip doing">2</span>
+                <div>
+                  <h4>Die behandelnden Ärzte sichtbarer machen</h4>
+                  <p>Die Arztprofile auf möglichst vielen passenden Behandlungsseiten integrieren, jeweils dort, wo die Zuordnung stimmt und die Einbindung freigegeben ist.</p>
+                </div>
+                <div class="prep">
+                  <p>Slider zur Einbindung der behandelnden Ärzte</p>
+                </div>
+              </div>
+              <div class="step">
+                <span class="chip doing">3</span>
+                <div>
+                  <h4>Die Inhalte weiter überarbeiten</h4>
+                  <p>Das bleibt der aufwendigste Teil. Dabei bearbeiten wir zusammenhängende Themenbereiche vollständig: Behandlungsseiten, Alternativen, Vergleiche und häufige Fragen. Entscheidend sind relevante, eigene Inhalte, die unsere Behandlungserfahrung und ärztliche Expertise zeigen.</p>
+                </div>
+                <div class="prep">
+                  <p>Der Prozess für die Überarbeitung ist bereit</p>
+                  <p>Vergleichstabellen, die verschiedene Behandlungen und ihre Unterschiede gegenüberstellen</p>
+                </div>
+              </div>
+            </div>
+            <p class="closing">So können wir vorbereitete Bausteine bereits breiter einsetzen, während die ausführlichen Überarbeitungen weiterlaufen.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 Instagram-Inhalte -->
+      <section class="slide" id="instagram-inhalte">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Ausblick · Instagram-Inhalte</span>
+            <span></span>
+          </div>
+          <div class="body igtable">
+            <h2 class="title">Instagram-Inhalte für die Seiten</h2>
+            <p class="lede-line">Was die Instagram-Auswertung zu den Behandlungen ergeben hat (Tabelle scrollbar).</p>
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Tabelle der Seiten mit Instagram-Inhalten, scrollbar">
+              <table class="ig-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Seite</th>
+                    <th scope="col" class="num">Capital Aesthetics</th>
+                    <th scope="col" class="num">Dr. Katharina</th>
+                    <th scope="col" class="num">Davon Videos</th>
+                    <th scope="col">Slider-Stand / Einschätzung</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr class="grp"><th colspan="5" scope="colgroup">Aktuelle Seiten</th></tr>
+                    <tr><th scope="row">miraDry</th><td class="num">20</td><td class="num">–</td><td class="num">–</td><td>8 Karten final: 4 Videos, 3 Prozessbilder, 1 Datenkarte</td></tr>
+                    <tr><th scope="row">CO₂-Laser</th><td class="num">55</td><td class="num">4</td><td class="num">–</td><td>5 Karten ausgewählt, 6 visuelle Kandidaten</td></tr>
+                    <tr><th scope="row">Ultherapy PRIME</th><td class="num">17</td><td class="num">–</td><td class="num">–</td><td>11 Videos heruntergeladen und transkribiert, 5 bis 6 davon für den Slider</td></tr>
+                    <tr><th scope="row">Sculptra</th><td class="num">10</td><td class="num">3</td><td class="num">–</td><td>4-Karten-Konzept, 6 Videos liegen lokal vor</td></tr>
+                    <tr><th scope="row">VOLNEWMER</th><td class="num">–</td><td class="num">–</td><td class="num">–</td><td>Kein Scrape-Pool nötig, 4 Karten</td></tr>
+                    <tr><th scope="row">Preservé / Motiva</th><td class="num">–</td><td class="num">8</td><td class="num">–</td><td>Ansatzpunkte vorhanden, noch keine freigegebene Galerie</td></tr>
+                    <tr><th scope="row">XERF</th><td class="num">0</td><td class="num">–</td><td class="num">–</td><td>Noch keine verwendbaren Slides (7 Erwähnungen in Kommentaren auf 4 Posts)</td></tr>
+                    <tr><th scope="row">Préime DermaFacial</th><td class="num">0</td><td class="num">–</td><td class="num">–</td><td>Keine exakten Treffer, 45 zu HydraFacial und Verwandtem, noch keine belastbare Auswahl</td></tr>
+                    <tr class="grp"><th colspan="5" scope="colgroup">Weitere Behandlungsseiten</th></tr>
+                    <tr><th scope="row">Abnehmspritze</th><td class="num">1</td><td class="num">28</td><td class="num">13</td><td>Viel Doctor-Content, aber medizinisch stark prüfen</td></tr>
+                    <tr><th scope="row">BBL HEROic</th><td class="num">40</td><td class="num">2</td><td class="num">16</td><td>Sehr guter Pool, 4–6 Slides</td></tr>
+                    <tr><th scope="row">Botox</th><td class="num">100</td><td class="num">7</td><td class="num">42</td><td>Sehr viel Material, aber stark kuratieren</td></tr>
+                    <tr><th scope="row">EMFACE</th><td class="num">9</td><td class="num">0</td><td class="num">3</td><td>Dünner Pool, ca. 3–4 Slides</td></tr>
+                    <tr><th scope="row">EMSCULPT Neo</th><td class="num">30</td><td class="num">0</td><td class="num">13</td><td>4–5 Slides möglich</td></tr>
+                    <tr><th scope="row">Endolift</th><td class="num">16</td><td class="num">0</td><td class="num">8</td><td>Gute Basis für 4–5 Slides</td></tr>
+                    <tr><th scope="row">Fraxel DUAL</th><td class="num">20</td><td class="num">3</td><td class="num">10</td><td>Guter Pool, 4–6 Slides</td></tr>
+                    <tr><th scope="row">HydraFacial / DermaFacial</th><td class="num">44</td><td class="num">1</td><td class="num">14</td><td>Gute Basis, Préime DermaFacial selbst nicht eindeutig gefunden</td></tr>
+                    <tr><th scope="row">Hyaluron / Filler</th><td class="num">101</td><td class="num">32</td><td class="num">47</td><td>Nur nach Unterthemen aufteilen</td></tr>
+                    <tr><th scope="row">Kryolipolyse / CoolTech</th><td class="num">20</td><td class="num">0</td><td class="num">5</td><td>4–5 Slides möglich</td></tr>
+                    <tr><th scope="row">LPG Endermologie</th><td class="num">8</td><td class="num">0</td><td class="num">2</td><td>3–4 Slides möglich</td></tr>
+                    <tr><th scope="row">Morpheus8</th><td class="num">27</td><td class="num">0</td><td class="num">11</td><td>Gute Basis für 4–6 Slides</td></tr>
+                    <tr><th scope="row">Polynukleotide</th><td class="num">17</td><td class="num">3</td><td class="num">13</td><td>Starker Pool, 4–6 Slides möglich</td></tr>
+                    <tr><th scope="row">Potenza RF</th><td class="num">3</td><td class="num">1</td><td class="num">0</td><td>Zu wenig Videomaterial</td></tr>
+                    <tr><th scope="row">Primelase / Laserhaarentfernung</th><td class="num">9</td><td class="num">0</td><td class="num">2</td><td>3–4 Slides möglich</td></tr>
+                    <tr><th scope="row">Radiesse</th><td class="num">1</td><td class="num">0</td><td class="num">1</td><td>Zu wenig Material, kein Slider priorisieren</td></tr>
+                    <tr><th scope="row">Secret RF / Secret PRO</th><td class="num">2</td><td class="num">0</td><td class="num">1</td><td>Noch nicht ausreichend</td></tr>
+                    <tr><th scope="row">Sofwave</th><td class="num">28</td><td class="num">0</td><td class="num">18</td><td>Sehr guter Video-Pool</td></tr>
+                    <tr><th scope="row">Thermage FLX</th><td class="num">19</td><td class="num">1</td><td class="num">3</td><td>4–6 Slides realistisch</td></tr>
+                    <tr><th scope="row">Tixel</th><td class="num">9</td><td class="num">0</td><td class="num">3</td><td>3–4 Slides möglich</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="notes">Basis: 494 Beiträge von Capital Aesthetics und 500 von Dr. Katharina. Treffer aus Beschreibungen und Hashtags, keine freigegebenen Slides. „–“ = keine Angabe. Bei Botox und Hyaluron sind die Treffer überwiegend Vergleichs- oder allgemeine Beauty-Posts, die Slider-Größe folgt daher den Unterthemen.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 3: Plastische Chirurgie -->
+      <section class="slide section-slide frame-free" id="kapitel-chirurgie">
+        <div class="slide-inner">
+          <div></div>
+          <div class="hero">
+            <p class="kicker">Kapitel 3</p>
+            <h1>Plastische Chirurgie</h1>
+          </div>
+          <p class="muted">SEO &amp; GEO Update</p>
+        </div>
+      </section>
+
+      <!-- 08 Plastische Chirurgie -->
+      <section class="slide" id="plastische-chirurgie">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Ausblick · Plastische Chirurgie</span>
+            <span></span>
+          </div>
+          <div class="body">
+            <h2 class="title">Plastische Chirurgie</h2>
+            <p class="lede-line">Strategisch wichtig, auch wegen der neuen Ärzte.</p>
+            <div class="panel-grid three-col">
+              <div class="panel">
+                <h3>Bestehende Patientinnen</h3>
+                <p>Wir erwarten, dass der größte Teil des Geschäfts von Patientinnen kommt, die wegen anderer Behandlungen ohnehin bei uns sind, und weniger über Seiten.</p>
+              </div>
+              <div class="panel">
+                <h3>SEO als gezielter Test</h3>
+                <p>Brust und Nase sind jetzt eigene Cluster. Wir bauen dort Themenautorität und ärztliche Inhalte auf, messen Klicks und Positionen und entscheiden danach über die nächsten Schritte.</p>
+              </div>
+              <div class="panel">
+                <h3>Paid Social und Paid Search</h3>
+                <p>Laufen bereits über die bestehende Agentur.</p>
+              </div>
+            </div>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 Brust und Nase: Ausgangslage und Wettbewerb -->
+      <section class="slide" id="brust-nase">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Plastische Chirurgie · Brust und Nase</span>
+            <span></span>
+          </div>
+          <div class="body bn">
+            <h2 class="title">Brust und Nase: strategische Wette, harter Wettbewerb</h2>
+            <p class="lede-line">Mit den neuen Ärzten wird plastische Chirurgie zum Kernbereich. Beide Themen sind jetzt eigene Cluster im SEO-Panel, damit wir sehen, wie weit wir kommen.</p>
+            <div class="stats">
+              <div class="stat"><b>0</b><span>Klicks im Juli 2026 auf die getrackten Suchen</span></div>
+              <div class="stat"><b>Seite 4 bis 6</b><span>Ø Google-Position (Brust 34 bis 46, Nase 43 bis 59)</span></div>
+              <div class="stat"><b>~1.160</b><span>Impressionen im Juli: sichtbar, aber weit hinten</span></div>
+            </div>
+            <div class="bars">
+              <div class="bar-col">
+                <h3>Brust: Seiten zum Thema</h3>
+                  <div class="bar-row"><span class="bar-name">wolff-edusei</span><span class="bar-track"><i style="width:100.0%"></i></span><b>73</b></div>
+                  <div class="bar-row"><span class="bar-name">sebastian-dunda</span><span class="bar-track"><i style="width:39.7%"></i></span><b>29</b></div>
+                  <div class="bar-row"><span class="bar-name">plastische-chirurgie-berlin</span><span class="bar-track"><i style="width:20.5%"></i></span><b>15</b></div>
+                  <div class="bar-row"><span class="bar-name">park-klinik-birkenwerder</span><span class="bar-track"><i style="width:15.1%"></i></span><b>11</b></div>
+                  <div class="bar-row cap"><span class="bar-name">Capital Aesthetics</span><span class="bar-track"><i style="width:9.6%"></i></span><b>7</b></div>
+              </div>
+              <div class="bar-col">
+                <h3>Nase: Seiten zum Thema</h3>
+                  <div class="bar-row"><span class="bar-name">hno-arzt-mueller</span><span class="bar-track"><i style="width:21.9%"></i></span><b>16</b></div>
+                  <div class="bar-row"><span class="bar-name">hno-dr-kazak</span><span class="bar-track"><i style="width:4.1%"></i></span><b>3</b></div>
+                  <div class="bar-row"><span class="bar-name">gesichtschirurgieberlin</span><span class="bar-track"><i style="width:2.7%"></i></span><b>2</b></div>
+                  <div class="bar-row"><span class="bar-name">klinik-am-kurfuerstendamm</span><span class="bar-track"><i style="width:1.4%"></i></span><b>1</b></div>
+                  <div class="bar-row cap"><span class="bar-name">Capital Aesthetics</span><span class="bar-track"><i style="width:2.7%"></i></span><b>2</b></div>
+              </div>
+            </div>
+            <p class="notes">Quellen: Search Console Juli 2026 (getrackte Suchanfragen, der Long Tail fehlt); Sitemaps der Berliner Top-10-Praxen, 25.09.2026, inkl. Nachbar-Eingriffen.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 Was Google und Patientinnen belohnen -->
+      <section class="slide" id="was-belohnt">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Plastische Chirurgie · Was zählt</span>
+            <span></span>
+          </div>
+          <div class="body reward">
+            <h2 class="title">Was Google und Patientinnen belohnen</h2>
+            <div class="factors">
+              <div class="factor"><b>Themenautorität</b><p>Wettbewerb bis 73 Seiten zum Thema, Capital 7</p></div>
+              <div class="factor"><b>Ärztliche Inhalte</b><p>Titel nennen Facharzt und Name, Video auf 2 von 4 geprüften Brust-Seiten der Wettbewerber</p></div>
+              <div class="factor"><b>Erfahrung</b><p>Zertifizierung, Arztprofil und Praxisbilder beim Wettbewerb</p></div>
+              <div class="factor"><b>Backlinks</b><p>Noch nicht gemessen, Linkprofile der Top 10 folgen</p></div>
+              <div class="factor"><b>Bewertungen</b><p>Noch nicht gemessen, Vergleich für Brust und Nase folgt</p></div>
+            </div>
+            <p class="closing">Ranking entsteht über Monate. Wir messen Klicks und Positionen pro Cluster und berichten, wie weit wir kommen.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kapitel 4: Meta Ads Proposal -->
+      <section class="slide section-slide frame-free" id="kapitel-meta">
+        <div class="slide-inner">
+          <div></div>
+          <div class="hero">
+            <p class="kicker">Kapitel 4</p>
+            <h1>Meta Ads Proposal</h1>
+          </div>
+          <p class="muted">SEO &amp; GEO Update</p>
+        </div>
+      </section>
+
+      <!-- 11 Meta Ads: Ansatz -->
+      <section class="slide" id="meta-ansatz">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Meta Ads · Ansatz</span>
+            <span></span>
+          </div>
+          <div class="body meta">
+            <h2 class="title">Meta Ads: Ansatz</h2>
+            <p class="lede-line">Der einfachste Einstieg sind die Videos, die es schon gibt.</p>
+            <div class="meta-cols">
+              <div class="panel">
+                <h3>Kreative</h3>
+                <ul>
+                  <li>Vorhandene Videos analysieren und prüfen, welche sich als Anzeige eignen. Videos, die organisch gut laufen, funktionieren oft auch als Anzeige.</li>
+                  <li>Bei Bedarf das Rohmaterial anfragen, um Videos anzeigentauglicher zu machen.</li>
+                  <li>Dazu die erklärenden Arztvideos vom Instagram-Profil.</li>
+                  <li>Einfache Bildanzeigen (Karten), wie viele andere sie einsetzen.</li>
+                  <li>Eine neue Capital-Aesthetics-Anzeige mit etwas Kante.</li>
+                </ul>
+              </div>
+              <div class="meta-side">
+              <div class="panel">
+                <h3>Premium-Anmutung</h3>
+                <p>Premium in den Kreativen signalisieren. Sonst passen die erreichte Zielgruppe und das Angebot nicht zusammen.</p>
+              </div>
+              <div class="panel">
+                <h3>Optimierungsziel</h3>
+                <p>Optimierung auf gebuchte Termine, nicht auf Sichtbarkeit. Reichweite bringt auf Meta aus unserer Sicht wenig.</p>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12 Meta Ads: Aufbau und Fokus -->
+      <section class="slide" id="meta-aufbau">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Meta Ads · Aufbau und Fokus</span>
+            <span></span>
+          </div>
+          <div class="body meta">
+            <h2 class="title">Meta Ads: Aufbau und Fokus</h2>
+            <p class="lede-line">Um etwas zu finden, das funktioniert, und es sauber zu testen, ergibt es keinen Sinn, alles auf einmal zu versuchen.</p>
+            <div class="panel-grid three-col">
+              <div class="panel">
+                <h3>Eigene Seiten</h3>
+                <ul>
+                  <li>Mit KI einfache, eigenständige Seiten bauen: schlankere Versionen der Behandlungsseiten.</li>
+                  <li>Ziel 1: Beratung buchen.</li>
+                  <li>Ziel 2: E-Mail abonnieren.</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Fokus</h3>
+                <ul>
+                  <li>3 Behandlungen gleichzeitig.</li>
+                  <li>1 Marken-Kampagne.</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <h3>Partnership Ads</h3>
+                <ul>
+                  <li>Kooperationen und persönliche Accounts nutzen.</li>
+                  <li>Die Anzeige zeigt den Klinik-Account, den Arzt-Account und bei einer Kooperation möglicherweise den Patientinnen-Account.</li>
+                  <li>So stärken sie sich gegenseitig.</li>
+                </ul>
+              </div>
+            </div>
+            <p class="closing">Erst eine Sache gut machen und dann kopieren, statt zehn Dinge mittelmäßig zu machen und den ganzen Kanal aufzugeben.</p>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13 Meta Ads: Zusammenarbeit -->
+      <section class="slide" id="meta-preis">
+        <div class="slide-inner">
+          <div class="frame-top">
+            <span>Meta Ads · Zusammenarbeit</span>
+            <span></span>
+          </div>
+          <div class="body meta">
+            <h2 class="title">Meta Ads: Zusammenarbeit</h2>
+            <div class="panel">
+              <ul>
+                <li>500 € pro Kampagne und Monat, netto.</li>
+                <li>4 Kampagnen: 3 Behandlungen und 1 Marken-Kampagne, zusammen 2.000 € pro Monat.</li>
+                <li>Mindestlaufzeit 3 Monate ab Aufbau und Start, danach monatlich kündbar.</li>
+                <li>Das Werbebudget zahlt Capital Aesthetics direkt an Meta. Es ist nicht in der Gebühr enthalten.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="frame-bottom">
+            <span>SEO &amp; GEO Update</span>
+            <span>24.09.2026</span>
+          </div>
+        </div>
+      </section>
+
+      </main>
+    <nav class="dots" id="dots" aria-label="Folien-Navigation"></nav>
+    <div class="laser" id="laser" aria-hidden="true"></div>
+    <script>
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const dotsNav = document.getElementById('dots');
+      const laser = document.getElementById('laser');
+      let current = 0;
+
+      // Auto page numbers in the top frame
+      const total = slides.length;
+      slides.forEach((slide, i) => {
+        const ft = slide.querySelector('.frame-top');
+        if (!ft) return;
+        const spans = ft.querySelectorAll('span');
+        if (spans.length) {
+          spans[spans.length - 1].textContent =
+            String(i + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+        }
+      });
+
+      function slideTitle(slide, i) {
+        const el = slide.querySelector('.title') || slide.querySelector('h1') || slide.querySelector('h2') || slide.querySelector('.kicker');
+        let t = el ? el.textContent.trim() : '';
+        if (!t) {
+          const ft = slide.querySelector('.frame-top span');
+          t = ft ? ft.textContent.trim() : '';
+        }
+        return t || ('Folie ' + (i + 1));
+      }
+
+      slides.forEach((slide, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', slideTitle(slide, i));
+        const label = document.createElement('span');
+        label.className = 'dot-label';
+        label.textContent = slideTitle(slide, i);
+        dot.appendChild(label);
+        dot.addEventListener('click', (e) => { e.stopPropagation(); go(i); });
+        dotsNav.appendChild(dot);
+      });
+      const dotEls = Array.from(dotsNav.children);
+
+      function setActive(i) {
+        current = i;
+        dotEls.forEach((d, j) => d.classList.toggle('active', j === i));
+      }
+
+      function go(i, options = {}) {
+        const next = Math.max(0, Math.min(i, slides.length - 1));
+        slides[next].scrollIntoView({
+          behavior: options.instant ? 'auto' : 'smooth',
+          block: 'start',
+        });
+        if (options.updateHash !== false && slides[next].id) {
+          history.replaceState(null, '', '#' + slides[next].id);
+        }
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(slides.indexOf(entry.target));
+        });
+      }, { threshold: 0.6 });
+      slides.forEach((slide) => observer.observe(slide));
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const target = document.querySelector(link.getAttribute('href'));
+          const index = slides.indexOf(target);
+          if (index < 0) return;
+          event.preventDefault();
+          event.stopPropagation();
+          go(index);
+        });
+      });
+
+      // Click anywhere to advance (ignore the dots nav)
+      document.addEventListener('click', (event) => {
+        if (event.target.closest('.dots')) return;
+        if (event.target.closest('a')) return;
+        go(current + 1);
+      });
+
+      // Laser pointer follows the cursor
+      let laserTimer;
+      document.addEventListener('mousemove', (event) => {
+        laser.style.transform = 'translate(' + event.clientX + 'px,' + event.clientY + 'px)';
+        laser.classList.add('active');
+        clearTimeout(laserTimer);
+        laserTimer = setTimeout(() => laser.classList.remove('active'), 2500);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(event.key)) {
+          event.preventDefault();
+          go(current + 1);
+        }
+        if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) {
+          event.preventDefault();
+          go(current - 1);
+        }
+      });
+
+      function goToHash() {
+        if (!window.location.hash) return false;
+        const index = slides.findIndex((slide) => slide.id === window.location.hash.slice(1));
+        if (index < 0) return false;
+        setActive(index);
+        go(index, { instant: true, updateHash: false });
+        return true;
+      }
+
+      if (!goToHash()) setActive(0);
+      window.addEventListener('load', () => setTimeout(goToHash, 0));
+      window.addEventListener('hashchange', goToHash);
+    </script>
+  </body>
+</html>
